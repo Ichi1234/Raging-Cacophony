@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player_IdleState : PlayerState
 {
-    public Player_IdleState(Player player, StateMachine stateMachine) : base(player, stateMachine)
+    public Player_IdleState(Player player, StateMachine stateMachine, string animParam) : base(player, stateMachine, animParam)
     {
     }
 
@@ -10,7 +10,6 @@ public class Player_IdleState : PlayerState
     {
         base.Enter();
 
-        Debug.Log("YAY I'm here");
     }
 
     public override void Update()

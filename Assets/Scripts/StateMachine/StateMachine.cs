@@ -13,12 +13,20 @@ public class StateMachine
     public void ChangeState(EntityState newState)
     {
         currentState.Exit();
+        UpdateAnimationParameter(false);
+
         currentState = newState;
         currentState.Enter();
+        UpdateAnimationParameter(true);
     }
 
     public void CallUpdateCurrentState()
     {
         currentState.Update();
+    }
+
+    private void UpdateAnimationParameter(bool activate)
+    {
+        currentState.UpdateAnimationParameter(activate);
     }
 }

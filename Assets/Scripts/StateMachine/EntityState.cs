@@ -1,12 +1,15 @@
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public abstract class EntityState
 {
     public StateMachine stateMachine { get; private set; }
+    public string animParam { get; private set; }
 
-    protected EntityState(StateMachine stateMachine)
+    protected EntityState(StateMachine stateMachine, string animParam)
     {
         this.stateMachine = stateMachine;
+        this.animParam = animParam;
     }
 
     public virtual void Enter()
@@ -19,7 +22,13 @@ public abstract class EntityState
         
     }
 
+
     public virtual void Exit()
+    {
+
+    }
+
+    public virtual void UpdateAnimationParameter(bool activate)
     {
 
     }
