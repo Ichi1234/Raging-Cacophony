@@ -1,16 +1,34 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Vector2 moveInput;
+    private PlayerInputSet input;
+
+    private void Awake()
     {
-        
+        input = new PlayerInputSet();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        
+        base.Update();
+
+        Debug.Log(moveInput);
+    }
+
+
+    private void OnEnable()
+    {
+        input.Enable();
+
+        input.Player.Move.performed += context => moveInput = context.ReadValue<Vector2>();
+        input.Player.Move.canceled += context => moveInput = Vector2.zero;
+    }
+
+    private void OnDisable()
+    {
+        input.Disable();
     }
 }
