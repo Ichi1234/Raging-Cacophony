@@ -18,6 +18,8 @@ public class Player_IdleState : PlayerState
     {
         base.Update();
 
+        Debug.Log(stateTimer);
+
         if (player.moveInput.x != 0)
         {
             stateMachine.ChangeState(player.moveState);

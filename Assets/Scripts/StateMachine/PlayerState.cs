@@ -30,6 +30,11 @@ public abstract class PlayerState : EntityState
         {
             stateMachine.ChangeState(player.jumpState);
         }
+
+        if (input.Player.Dash.WasPressedThisFrame())
+        {
+            stateMachine.ChangeState(player.dashState);
+        }
     }
 
     public override void UpdateAnimationParameter(bool activate)

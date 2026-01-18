@@ -9,7 +9,7 @@ public class Entity : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     public bool isGround { get; private set; }
 
-    protected float facingDir = 1;
+    public float facingDir = 1;
 
     public StateMachine stateMachine { get; private set; }
 

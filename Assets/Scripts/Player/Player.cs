@@ -7,6 +7,7 @@ public class Player : Entity
     public Player_IdleState idleState { get; private set; }
     public Player_MoveState moveState { get; private set; }
     public Player_JumpState jumpState { get; private set; }
+    public Player_DashState dashState { get; private set; }
 
     private Rigidbody2D rb;
 
@@ -15,9 +16,13 @@ public class Player : Entity
 
 
     [Header("Movement Detail")]
-    public float moveSpeed = 4;
-    public float jumpForce = 12;
+    public float moveSpeed;
+    public float jumpForce;
+    public float dashForce;
+    public float dashDuration;
+
     private Coroutine jumpAnimationCo;
+
 
 
     protected override void Awake()
@@ -30,6 +35,7 @@ public class Player : Entity
         idleState = new Player_IdleState(this, stateMachine, "isIdle");
         moveState = new Player_MoveState(this, stateMachine, "isMoving");
         jumpState = new Player_JumpState(this, stateMachine, "");
+        dashState = new Player_DashState(this, stateMachine, "");
 
         stateMachine.Initialize(idleState);
 
