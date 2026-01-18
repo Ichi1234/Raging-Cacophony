@@ -20,10 +20,10 @@ public class Player : Entity
     public float jumpForce;
     public float dashForce;
     public float dashDuration;
+    public float dashCooldown = 5;
 
-    private Coroutine jumpAnimationCo;
-    protected Coroutine dashAnimationCo;
-
+    private Coroutine movementAnimationCo;
+    private Vector3 originalScale;
 
 
     protected override void Awake()
@@ -39,6 +39,8 @@ public class Player : Entity
         dashState = new Player_DashState(this, stateMachine, "");
 
         stateMachine.Initialize(idleState);
+
+        originalScale = transform.localScale;
 
 
     }
@@ -80,25 +82,25 @@ public class Player : Entity
 
     public void JumpAnimation()
     {
-        if (jumpAnimationCo != null)
+        if (movementAnimationCo != null)
         {
-            StopCoroutine(jumpAnimationCo);
+            StopCoroutine(movementAnimationCo);
         }
 
-        jumpAnimationCo = StartCoroutine(JumpAnimationCo(transform.localScale));
+        movementAnimationCo = StartCoroutine(JumpAnimationCo());
     }
 
     public void DashAnimation()
     {
-        if (dashAnimationCo != null)
+        if (movementAnimationCo != null)
         {
-            StopCoroutine(dashAnimationCo);
+            StopCoroutine(movementAnimationCo);
         }
 
-        dashAnimationCo = StartCoroutine(DashAnimationCo(transform.localScale));
+        movementAnimationCo = StartCoroutine(DashAnimationCo());
     }
 
-    public IEnumerator JumpAnimationCo(Vector3 originalScale)
+    public IEnumerator JumpAnimationCo()
     {
         Vector3 shrinkTo = new Vector3(originalScale.x / 2, originalScale.y * 1.2f);
 
@@ -110,13 +112,13 @@ public class Player : Entity
 
     }
 
-    public IEnumerator DashAnimationCo(Vector3 originalScale)
+    public IEnumerator DashAnimationCo()
     {
-        Vector3 shrinkTo = new Vector3(originalScale.x * 2, originalScale.y / 1.2f);
+        Vector3 shrinkTo = new Vector3(originalScale.x * 1.5f, originalScale.y / 2f);
 
         StartCoroutine(ChangeTransformAnimation(transform.localScale, shrinkTo, 0.5f));
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
 
         StartCoroutine(ChangeTransformAnimation(transform.localScale, originalScale, 0.5f));
 

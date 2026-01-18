@@ -13,6 +13,7 @@ public abstract class EntityState
         this.animParam = animParam;
     }
 
+
     public virtual void Enter()
     {
     }
