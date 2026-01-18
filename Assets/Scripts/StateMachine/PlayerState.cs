@@ -14,6 +14,7 @@ public abstract class PlayerState : EntityState
 
         rb = player.GetComponent<Rigidbody2D>();
         anim = player.GetComponentInChildren<Animator>();
+        entityVfx = player.GetComponent<Entity_Vfx>();
         input = player.input;
 
         lastDashTime -= player.dashCooldown;
@@ -48,6 +49,11 @@ public abstract class PlayerState : EntityState
         if (input.Player.Jump.WasPerformedThisFrame() && player.isGround)
         {
             stateMachine.ChangeState(player.jumpState);
+        }
+
+        if (input.Player.Attack.WasPerformedThisFrame())
+        {
+            stateMachine.ChangeState(player.attackState);
         }
 
     }

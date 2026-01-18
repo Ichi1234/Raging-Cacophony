@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Player
+    uniqueID: 3910505287
+    locked: 0
+  - name: Boss
+    uniqueID: 4075513659
+    locked: 0
+  - name: Vfx
+    uniqueID: 3049121271
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

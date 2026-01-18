@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1266464872174118372}
   - component: {fileID: 8565286041634216706}
   - component: {fileID: 3258722844513256111}
+  - component: {fileID: 9150900899810802344}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -78,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1245846025
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1377338733, guid: 194cf19540468714abcb30df5cd27e66, type: 3}
@@ -114,6 +115,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9150900899810802344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145159506086746175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1390183fa170e4595e863fd346088d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Vfx_AnimationTriggers
 --- !u!1 &6403785749424376584
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,8 +136,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6202723833793566447}
+  - component: {fileID: 368509762704876515}
   m_Layer: 0
-  m_Name: Vfx_slash
+  m_Name: VfxObject_Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,10 +153,22 @@ Transform:
   m_GameObject: {fileID: 6403785749424376584}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.41, y: -6.15, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1266464872174118372}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &368509762704876515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6403785749424376584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799fe925882572345a920c80eb40fcdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameObject_Slash

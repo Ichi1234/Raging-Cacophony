@@ -4,8 +4,9 @@ using UnityEngine.PlayerLoop;
 public abstract class EntityState
 {
     public StateMachine stateMachine { get; private set; }
-    public string animParam { get; private set; }
     protected float stateTimer;
+    protected Entity_Vfx entityVfx;
+    public string animParam { get; private set; }
 
     protected EntityState(StateMachine stateMachine, string animParam)
     {
