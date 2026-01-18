@@ -40,6 +40,7 @@ public class Player : Entity
     {
         base.Update();
 
+        HandleFlip();
     }
 
 
@@ -60,6 +61,14 @@ public class Player : Entity
     public void SetVelocity(float velocityX, float velocityY)
     {
         rb.linearVelocity = new Vector2(velocityX, velocityY);
+    }
+
+    public void HandleFlip()
+    {
+        if (moveInput.x != facingDir && moveInput.x != 0)
+        {
+            Flip();
+        }
     }
 
     public void JumpAnimation()

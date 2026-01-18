@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -7,6 +8,8 @@ public class Entity : MonoBehaviour
     [SerializeField] private float checkGroundLine;
     [SerializeField] private LayerMask groundLayer;
     public bool isGround { get; private set; }
+
+    protected float facingDir = 1;
 
     public StateMachine stateMachine { get; private set; }
 
@@ -51,5 +54,11 @@ public class Entity : MonoBehaviour
         }
 
         transform.localScale = end;
+    }
+
+    protected void Flip()
+    {
+        facingDir *= -1;
+        transform.Rotate(0, 180, 0);
     }
 }
