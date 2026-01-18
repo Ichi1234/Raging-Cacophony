@@ -458,12 +458,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccaea599175bfc640a8f24c5ea615475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  moveSpeed: 10
-  jumpForce: 12
-  checkGroundLine: 2.1
+  checkGroundLine: 2.4
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  facingDir: 1
+  moveSpeed: 9
+  jumpForce: 12
+  dashForce: 20
+  dashDuration: 0.25
+  dashCooldown: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
