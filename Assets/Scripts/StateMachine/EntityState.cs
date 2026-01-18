@@ -6,7 +6,6 @@ public abstract class EntityState
     public StateMachine stateMachine { get; private set; }
     public string animParam { get; private set; }
     protected float stateTimer;
-    protected float stateEnterTime;
 
     protected EntityState(StateMachine stateMachine, string animParam)
     {
@@ -16,12 +15,11 @@ public abstract class EntityState
 
     public virtual void Enter()
     {
-        stateEnterTime = stateTimer;
     }
 
     public virtual void Update()
     {
-        stateTimer += Time.deltaTime;
+        stateTimer -= Time.deltaTime;
     }
 
 

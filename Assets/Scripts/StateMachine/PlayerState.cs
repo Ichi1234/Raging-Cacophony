@@ -26,12 +26,12 @@ public abstract class PlayerState : EntityState
             return;
         }
 
-        if (input.Player.Jump.WasPressedThisFrame() && player.isGround)
+        if (input.Player.Jump.WasPerformedThisFrame() && player.isGround)
         {
             stateMachine.ChangeState(player.jumpState);
         }
 
-        if (input.Player.Dash.WasPressedThisFrame())
+        if (input.Player.Dash.WasPerformedThisFrame())
         {
             stateMachine.ChangeState(player.dashState);
         }

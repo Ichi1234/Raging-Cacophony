@@ -22,6 +22,7 @@ public class Player : Entity
     public float dashDuration;
 
     private Coroutine jumpAnimationCo;
+    protected Coroutine dashAnimationCo;
 
 
 
@@ -87,9 +88,31 @@ public class Player : Entity
         jumpAnimationCo = StartCoroutine(JumpAnimationCo(transform.localScale));
     }
 
+    public void DashAnimation()
+    {
+        if (dashAnimationCo != null)
+        {
+            StopCoroutine(dashAnimationCo);
+        }
+
+        dashAnimationCo = StartCoroutine(DashAnimationCo(transform.localScale));
+    }
+
     public IEnumerator JumpAnimationCo(Vector3 originalScale)
     {
         Vector3 shrinkTo = new Vector3(originalScale.x / 2, originalScale.y * 1.2f);
+
+        StartCoroutine(ChangeTransformAnimation(transform.localScale, shrinkTo, 0.5f));
+
+        yield return new WaitForSeconds(1);
+
+        StartCoroutine(ChangeTransformAnimation(transform.localScale, originalScale, 0.5f));
+
+    }
+
+    public IEnumerator DashAnimationCo(Vector3 originalScale)
+    {
+        Vector3 shrinkTo = new Vector3(originalScale.x * 2, originalScale.y / 1.2f);
 
         StartCoroutine(ChangeTransformAnimation(transform.localScale, shrinkTo, 0.5f));
 

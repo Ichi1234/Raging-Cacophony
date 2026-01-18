@@ -10,14 +10,18 @@ public class Player_DashState : PlayerState
     {
         base.Enter();
 
-        player.SetVelocity(player.dashForce * player.facingDir, rb.linearVelocity.y);
+        stateTimer = player.dashDuration;
+        player.DashAnimation();
+     
     }
 
     public override void Update()
     {
         base.Update();
 
-        if (stateTimer - stateEnterTime > player.dashDuration)
+        player.SetVelocity(player.dashForce * player.facingDir, 0);
+
+        if (stateTimer < 0)
         {
             stateMachine.ChangeState(player.idleState);
         }
