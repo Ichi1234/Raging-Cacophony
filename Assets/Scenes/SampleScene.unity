@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 372218134}
   - component: {fileID: 372218133}
   - component: {fileID: 372218135}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ Transform:
   m_GameObject: {fileID: 372218131}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.09, y: -5.68, z: 0}
+  m_LocalPosition: {x: -9.07, y: -6.1, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -416,8 +416,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0.044378757, y: -0.033090353}
+  m_Size: {x: 0.2200141, y: 0.9338193}
   m_Direction: 0
 --- !u!50 &372218134
 Rigidbody2D:
@@ -459,6 +459,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   moveSpeed: 10
+  jumpForce: 12
+  checkGroundLine: 2.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,8 +696,8 @@ GameObject:
   - component: {fileID: 736668333}
   - component: {fileID: 736668332}
   - component: {fileID: 736668334}
-  m_Layer: 0
-  m_Name: Square
+  m_Layer: 8
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -829,7 +834,7 @@ GameObject:
   - component: {fileID: 2059069170}
   - component: {fileID: 2059069172}
   - component: {fileID: 2059069171}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

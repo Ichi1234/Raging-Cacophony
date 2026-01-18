@@ -10,6 +10,8 @@ public class Player_IdleState : PlayerState
     {
         base.Enter();
 
+        player.SetVelocity(0, 0);
+
     }
 
     public override void Update()
@@ -18,7 +20,7 @@ public class Player_IdleState : PlayerState
 
         if (player.moveInput.x != 0)
         {
-            stateMachine.ChangeState(player.playerMoveState);
+            stateMachine.ChangeState(player.moveState);
         }
     }
 }

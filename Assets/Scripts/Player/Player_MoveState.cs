@@ -11,11 +11,11 @@ public class Player_MoveState : PlayerState
     {
         base.Update();
 
-        if (player.moveInput.x == 0)
+        if (player.moveInput == Vector2.zero && player.isGround)
         {
             stateMachine.ChangeState(player.idleState);
         }
-        rb.linearVelocity = new Vector2(player.moveInput.x * player.moveSpeed, rb.linearVelocity.y);
+        player.SetVelocity(player.moveInput.x * player.moveSpeed, rb.linearVelocity.y);
     }
 
 
