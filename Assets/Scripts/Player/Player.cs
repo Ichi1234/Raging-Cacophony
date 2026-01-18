@@ -7,6 +7,7 @@ public class Player : Entity
     public Player_IdleState idleState { get; private set; }
     public Player_MoveState moveState { get; private set; }
     public Player_JumpState jumpState { get; private set; }
+    public Player_DashState dashState { get; private set; }
 
     private Rigidbody2D rb;
 
@@ -15,9 +16,14 @@ public class Player : Entity
 
 
     [Header("Movement Detail")]
-    public float moveSpeed = 4;
-    public float jumpForce = 12;
-    private Coroutine jumpAnimationCo;
+    public float moveSpeed;
+    public float jumpForce;
+    public float dashForce;
+    public float dashDuration;
+    public float dashCooldown = 5;
+
+    private Coroutine movementAnimationCo;
+    private Vector3 originalScale;
 
 
     protected override void Awake()
@@ -30,8 +36,11 @@ public class Player : Entity
         idleState = new Player_IdleState(this, stateMachine, "isIdle");
         moveState = new Player_MoveState(this, stateMachine, "isMoving");
         jumpState = new Player_JumpState(this, stateMachine, "");
+        dashState = new Player_DashState(this, stateMachine, "");
 
         stateMachine.Initialize(idleState);
+
+        originalScale = transform.localScale;
 
 
     }
@@ -73,21 +82,43 @@ public class Player : Entity
 
     public void JumpAnimation()
     {
-        if (jumpAnimationCo != null)
+        if (movementAnimationCo != null)
         {
-            StopCoroutine(jumpAnimationCo);
+            StopCoroutine(movementAnimationCo);
         }
 
-        jumpAnimationCo = StartCoroutine(JumpAnimationCo(transform.localScale));
+        movementAnimationCo = StartCoroutine(JumpAnimationCo());
     }
 
-    public IEnumerator JumpAnimationCo(Vector3 originalScale)
+    public void DashAnimation()
+    {
+        if (movementAnimationCo != null)
+        {
+            StopCoroutine(movementAnimationCo);
+        }
+
+        movementAnimationCo = StartCoroutine(DashAnimationCo());
+    }
+
+    public IEnumerator JumpAnimationCo()
     {
         Vector3 shrinkTo = new Vector3(originalScale.x / 2, originalScale.y * 1.2f);
 
         StartCoroutine(ChangeTransformAnimation(transform.localScale, shrinkTo, 0.5f));
 
         yield return new WaitForSeconds(1);
+
+        StartCoroutine(ChangeTransformAnimation(transform.localScale, originalScale, 0.5f));
+
+    }
+
+    public IEnumerator DashAnimationCo()
+    {
+        Vector3 shrinkTo = new Vector3(originalScale.x * 1.5f, originalScale.y / 2f);
+
+        StartCoroutine(ChangeTransformAnimation(transform.localScale, shrinkTo, 0.5f));
+
+        yield return new WaitForSeconds(0.5f);
 
         StartCoroutine(ChangeTransformAnimation(transform.localScale, originalScale, 0.5f));
 
