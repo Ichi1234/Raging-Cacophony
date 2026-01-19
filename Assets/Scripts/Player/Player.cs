@@ -29,10 +29,6 @@ public class Player : Entity
     private Coroutine movementAnimationCo;
     private Vector3 originalScale;
 
-    [Header("Attack Details")]
-    public float attackCooldown = 1;
-    public Transform attackPosition;
-
 
     protected override void Awake()
     {

@@ -19,7 +19,7 @@ public abstract class PlayerState : EntityState
         input = player.input;
 
         lastDashTime -= player.dashCooldown;
-        lastAttackTime -= player.attackCooldown;
+        lastAttackTime -= player.entityCombat.attackCooldown;
     }
 
     public override void Enter()
@@ -85,5 +85,5 @@ public abstract class PlayerState : EntityState
         }
     }
     protected bool CanDash() => Time.time - lastDashTime > player.dashCooldown;
-    protected bool CanAttack() => Time.time - lastAttackTime > player.attackCooldown;
+    protected bool CanAttack() => Time.time - lastAttackTime > player.entityCombat.attackCooldown;
 }

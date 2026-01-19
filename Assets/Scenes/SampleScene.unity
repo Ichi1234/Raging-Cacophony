@@ -373,6 +373,8 @@ GameObject:
   - component: {fileID: 372218133}
   - component: {fileID: 372218135}
   - component: {fileID: 372218136}
+  - component: {fileID: 372218137}
+  - component: {fileID: 372218138}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -477,6 +479,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  canFlip: 1
   facingDir: 1
   moveSpeed: 9
   jumpForce: 12
@@ -498,6 +501,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Vfx
   attackVfx: {fileID: 3528483140089254388}
+--- !u!114 &372218137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372218131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5bf1dd0e9e27a4e943bd173c893a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity_Health
+  maxHealth: 100
+--- !u!114 &372218138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372218131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ddd9690905a8704d9dae6cca0d9e25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity_Combat
+  attackDamage: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,6 +929,8 @@ GameObject:
   - component: {fileID: 2059069170}
   - component: {fileID: 2059069172}
   - component: {fileID: 2059069171}
+  - component: {fileID: 2059069174}
+  - component: {fileID: 2059069173}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -987,6 +1018,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2059069173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059069169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ddd9690905a8704d9dae6cca0d9e25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity_Combat
+  attackDamage: 10
+--- !u!114 &2059069174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059069169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5bf1dd0e9e27a4e943bd173c893a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity_Health
+  maxHealth: 100
 --- !u!212 &1170147038535146521
 SpriteRenderer:
   serializedVersion: 2
@@ -1084,6 +1141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3528483140089254388}
   - component: {fileID: 7205202377667601656}
+  - component: {fileID: 7205202377667601657}
   m_Layer: 0
   m_Name: VfxObject_Slash
   m_TagString: Untagged
@@ -1125,6 +1183,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799fe925882572345a920c80eb40fcdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameObject_Slash
+--- !u!70 &7205202377667601657
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4484989275804453907}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.63, y: 0.38}
+  m_Direction: 1
 --- !u!1 &7568119192697872164
 GameObject:
   m_ObjectHideFlags: 0

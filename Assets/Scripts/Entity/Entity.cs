@@ -8,6 +8,10 @@ public class Entity : MonoBehaviour
     [SerializeField] private float checkGroundLine;
     [SerializeField] private LayerMask groundLayer;
 
+    [Header("Attack Details")]
+    [SerializeField] public Entity_Combat entityCombat;
+    
+
     public bool canFlip = true;
     public bool isGround { get; private set; }
 
@@ -18,6 +22,8 @@ public class Entity : MonoBehaviour
     protected virtual void Awake()
     {
         stateMachine = new StateMachine();
+
+        entityCombat = GetComponent<Entity_Combat>();
     }
 
     protected virtual void Start()
@@ -41,7 +47,9 @@ public class Entity : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -checkGroundLine));
+
     }
+   
 
     protected bool GroundDetected()
     {

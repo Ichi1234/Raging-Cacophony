@@ -47,7 +47,7 @@ public class Player_AttackState : PlayerState
 
         }
 
-        player.attackPosition.transform.localPosition = destinationPosition;
+        player.entityCombat.attackPosition.transform.localPosition = destinationPosition;
     }
 
     protected void HandleAttackRotation(PlayerAttackTypes attackTypes)
@@ -56,13 +56,13 @@ public class Player_AttackState : PlayerState
         switch (attackTypes)
         {
             case PlayerAttackTypes.Up:
-                player.attackPosition.transform.rotation = Quaternion.Euler(0, 0, 90);
+                player.entityCombat.attackPosition.transform.rotation = Quaternion.Euler(0, 0, 90);
                 break;
             case PlayerAttackTypes.Basic:
-                player.attackPosition.transform.rotation = player.facingDir == 1 ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 0, 180);
+                player.entityCombat.attackPosition.transform.rotation = player.facingDir == 1 ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 0, 180);
                 break;
             case PlayerAttackTypes.Down:
-                player.attackPosition.transform.rotation = Quaternion.Euler(0, 0, 270);
+                player.entityCombat.attackPosition.transform.rotation = Quaternion.Euler(0, 0, 270);
                 break;
         }
     }
