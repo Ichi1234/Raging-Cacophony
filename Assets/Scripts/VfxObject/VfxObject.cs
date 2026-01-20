@@ -9,11 +9,6 @@ public class VfxObject : MonoBehaviour
         combatInfo = GetComponentInParent<Entity_Combat>();
     }
 
-    private void OnEnable()
-    {
-        transform.position = combatInfo.attackPosition.transform.position;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         

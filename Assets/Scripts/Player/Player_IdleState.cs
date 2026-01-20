@@ -10,7 +10,7 @@ public class Player_IdleState : PlayerState
     {
         base.Enter();
 
-        player.SetVelocity(0, 0);
+        player.SetVelocity(0, rb.linearVelocity.y);
 
     }
 
