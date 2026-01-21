@@ -58,7 +58,7 @@ public abstract class Entity : MonoBehaviour
         stateMachine.currentState.AnimationTriggered();
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -checkGroundLine));
 
@@ -77,6 +77,12 @@ public abstract class Entity : MonoBehaviour
     }
 
     public virtual void HandleFlip()
+    {
+
+    }
+
+
+    public virtual void HandleFlip(float moveDir=1)
     {
 
     }

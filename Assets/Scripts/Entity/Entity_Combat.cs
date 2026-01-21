@@ -13,11 +13,17 @@ public class Entity_Combat : MonoBehaviour
 
     public void PerformAttack(Collider2D targetCollision)
     {
-        if (targetCollision.gameObject.layer == LayerMask.NameToLayer("Boss") || targetCollision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (IsOpponent(targetCollision))
         {
             Entity_Health entityHealth = targetCollision.gameObject.GetComponent<Entity_Health>();
             entityHealth.ReduceHealth(attackDamage);
         }
     }
 
+    private bool IsOpponent(Collider2D targetCollision)
+    {
+        return targetCollision.gameObject.layer == LayerMask.NameToLayer("Boss") 
+            || targetCollision.gameObject.layer == LayerMask.NameToLayer("Player") 
+            && targetCollision.gameObject.layer != gameObject.layer;
+    }
 }

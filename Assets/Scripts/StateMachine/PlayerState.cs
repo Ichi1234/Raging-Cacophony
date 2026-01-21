@@ -4,12 +4,11 @@ public abstract class PlayerState : EntityState
 {
     protected Player player;
     protected Rigidbody2D rb;
-    protected Animator anim;
     protected PlayerInputSet input;
     private float lastDashTime;
     private float lastAttackTime;
 
-    public PlayerState(Player player, StateMachine stateMachine, string animParam) : base(stateMachine, animParam)
+    public PlayerState(Player player, StateMachine stateMachine, string animParam) : base(player, stateMachine, animParam)
     {
         this.player = player;
 
@@ -20,12 +19,6 @@ public abstract class PlayerState : EntityState
 
         lastDashTime -= player.dashCooldown;
         lastAttackTime -= player.entityCombat.attackCooldown;
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
-
     }
 
     public override void Update()
@@ -60,14 +53,6 @@ public abstract class PlayerState : EntityState
 
     }
 
-    public override void UpdateAnimationParameter(bool activate)
-    {
-        if (animParam == "")
-        {
-            return;
-        }
-        anim.SetBool(animParam, activate);
-    }
 
     private void HandleAttackTypes()
     {
