@@ -12,8 +12,6 @@ public class Boss_MoveState : BossState
     public override void Enter()
     {
         base.Enter();
-
-        stateMachine.canChangeState = false;
     }
 
     public override void Update()
@@ -45,7 +43,7 @@ public class Boss_MoveState : BossState
 
         boss.SetVelocity(boss.moveSpeed * playerDirection, rb.linearVelocity.y);
 
-        boss.HandleFlip(-playerDirection);
+        boss.HandleFlip(playerDirection);
 
     }
 

@@ -12,6 +12,7 @@ public class Boss : Entity
 
     public Boss_IdleState idleState { get; private set; }
     public Boss_MoveState moveState { get; private set; }
+    public Boss_BasicAttackState basicAttackState { get; private set; }
 
 
     protected override void Awake()
@@ -24,6 +25,7 @@ public class Boss : Entity
 
         idleState = new Boss_IdleState(this, stateMachine, "isIdle");
         moveState = new Boss_MoveState(this, stateMachine, "isMoving");
+        basicAttackState = new Boss_BasicAttackState(this, stateMachine, "isBasicAttack");
        
 
         stateMachine.Initialize(idleState);

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class BossState : EntityState
 {
@@ -8,8 +7,8 @@ public class BossState : EntityState
     protected Rigidbody2D rb;
     protected Entity_Combat bossCombat;
 
-    protected float nearPlayerDistance = 13;
-    protected float farPlayerDistance = 20;
+    protected float nearPlayerDistance = 8;
+    protected float farPlayerDistance = 13;
 
     protected float randomChangeState;
     protected float curStateRandomResult;
@@ -35,6 +34,7 @@ public class BossState : EntityState
     {
         base.Enter();
 
+        //stateMachine.canChangeState = false;
         curStateRandomResult = Random.value;
         randomChangeState = Random.Range(0, 100);
     }
@@ -42,6 +42,11 @@ public class BossState : EntityState
     public override void Update()
     {
         base.Update();
+
+        if (Input.GetKey(KeyCode.P))
+        {
+            stateMachine.ChangeState(boss.basicAttackState);
+        }
 
         //if (randomChangeState < 70)
         //{
