@@ -4,6 +4,7 @@ public class VfxObject : MonoBehaviour
 {
     protected Entity_Combat combatInfo;
 
+
     private void Awake()
     {
         combatInfo = GetComponentInParent<Entity_Combat>();
@@ -14,7 +15,7 @@ public class VfxObject : MonoBehaviour
         
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boss") || collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            combatInfo.PerformAttack(collision);
+            combatInfo.PerformAttack(collision, combatInfo.basicAttackKnockback);
         }
         
 

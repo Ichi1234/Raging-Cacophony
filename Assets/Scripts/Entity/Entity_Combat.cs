@@ -6,18 +6,21 @@ public class Entity_Combat : MonoBehaviour
     public float attackDamage = 10;
     public float attackCooldown = 1;
     public Transform attackPosition;
+    public float basicAttackKnockback = 4;
+    public float contactKnockback = 8;
+
 
     public Vector3 attackHitboxSize;
     public Vector3 attackHitboxOffset;
 
 
-    public void PerformAttack(Collider2D targetCollision)
+    public void PerformAttack(Collider2D targetCollision, float knockback)
     {
         if (IsOpponent(targetCollision))
         {
             Entity_Health entityHealth = targetCollision.gameObject.GetComponent<Entity_Health>();
             float attackDir = transform.position.x < targetCollision.transform.position.x ? 1 : -1;
-            entityHealth.TakeDamage(attackDamage, attackDir, targetCollision.transform);
+            entityHealth.TakeDamage(attackDamage, attackDir, knockback, targetCollision);
         }
     }
 

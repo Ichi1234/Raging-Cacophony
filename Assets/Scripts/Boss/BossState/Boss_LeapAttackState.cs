@@ -21,9 +21,6 @@ public class Boss_LeapAttackState : BossState
     {
         base.Update();
 
-        Debug.Log(boss.transform.position.y);
-
-        Debug.Log(currentTopOfPlayerPosition.y);
         if (boss.transform.position.y >= currentTopOfPlayerPosition.y)
         {
             stateMachine.canChangeState = true;
