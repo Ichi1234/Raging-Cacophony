@@ -364,8 +364,8 @@ Transform:
   m_GameObject: {fileID: 55108398}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.852, y: -0.0246, z: 0}
-  m_LocalScale: {x: 1.5777657, y: 17.891417, z: 1}
+  m_LocalPosition: {x: 23.96, y: 2.0146, z: 0}
+  m_LocalScale: {x: 1.5777657, y: 22.480564, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -828,7 +828,7 @@ Transform:
   m_GameObject: {fileID: 372218131}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.07, y: -2.33, z: 0}
+  m_LocalPosition: {x: -18.22, y: -7.05, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -888,7 +888,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1150,7 +1150,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 13
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1529,8 +1529,8 @@ Transform:
   m_GameObject: {fileID: 736668331}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0229, y: -7.1696, z: 0}
-  m_LocalScale: {x: 32.13372, y: 3.880833, z: 1}
+  m_LocalPosition: {x: 0.099, y: -11, z: 0}
+  m_LocalScale: {x: 46.583073, y: 3.880833, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2184,8 +2184,8 @@ Transform:
   m_GameObject: {fileID: 1555423006}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.84, y: -0.0246, z: 0}
-  m_LocalScale: {x: 1.5777657, y: 17.891417, z: 1}
+  m_LocalPosition: {x: -23.95, y: 2.9975, z: 0}
+  m_LocalScale: {x: 1.5777657, y: 24.34664, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2595,7 +2595,7 @@ Transform:
   m_GameObject: {fileID: 2059069169}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.27, y: -0.42, z: 0}
+  m_LocalPosition: {x: 15.46, y: -5.19, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2707,7 +2707,7 @@ MonoBehaviour:
   canFlip: 1
   facingDir: -1
   player: {fileID: 372218135}
-  checkWallLine: 6.61
+  checkWallLine: 4.57
   wallLayer:
     serializedVersion: 2
     m_Bits: 512

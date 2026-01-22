@@ -10,8 +10,6 @@ public class Boss_BasicAttackState : BossState
     {
         base.Enter();
 
-        Debug.Log("Im here");
-
         HandleAttackRotation();
 
         boss.SetVelocity(0, rb.linearVelocity.y);
