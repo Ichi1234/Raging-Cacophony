@@ -6,9 +6,11 @@ public class Boss : Entity
     [SerializeField] private Player player;
 
     [Header("Collision Detection")]
-    [SerializeField] private float checkWallLine;
+    [SerializeField] private float checkBackWallLine;
+    [SerializeField] private float checkFrontWallLine;
     [SerializeField] private LayerMask wallLayer;
-    public bool wallDetected { get; private set; }
+    public bool backWallDetected { get; private set; }
+    public bool frontWallDetected { get; private set; }
 
     public Boss_IdleState idleState { get; private set; }
     public Boss_MoveState moveState { get; private set; }
@@ -16,6 +18,7 @@ public class Boss : Entity
     public Boss_LeapAttackState leapAttackState { get; private set; }
     public Boss_SlamAttackState slamAttackState { get; private set; }
     public Boss_PrepareToAttackState prepareToAttackState { get; private set; }
+    public Boss_LungeAttackState prepareLungeAttackState { get; private set; }
 
 
     protected override void Awake()
@@ -28,10 +31,12 @@ public class Boss : Entity
 
         idleState = new Boss_IdleState(this, stateMachine, "isIdle");
         moveState = new Boss_MoveState(this, stateMachine, "isMoving");
+        
         basicAttackState = new Boss_BasicAttackState(this, stateMachine, "isBasicAttack");
-        leapAttackState = new Boss_LeapAttackState(this, stateMachine, "isLeapAttack");
-        slamAttackState = new Boss_SlamAttackState(this, stateMachine, "isLeapAttack");
         prepareToAttackState = new Boss_PrepareToAttackState(this, stateMachine, "isPrepareAttack");
+        leapAttackState = new Boss_LeapAttackState(this, stateMachine, "isMoving");
+        slamAttackState = new Boss_SlamAttackState(this, stateMachine, "isMoving");
+        prepareLungeAttackState = new Boss_LungeAttackState(this, stateMachine, "isMoving", FindAnyObjectByType<Arena>());
 
 
 
@@ -44,7 +49,8 @@ public class Boss : Entity
     {
         base.Update();
 
-        wallDetected = WallDetected();
+        frontWallDetected = FrontWallDetected();
+        backWallDetected = BackWallDetected();
     }
 
     public Player GetPlayer()
@@ -65,13 +71,21 @@ public class Boss : Entity
         base.OnDrawGizmos();
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(checkWallLine * -facingDir, 0));
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(checkBackWallLine * -facingDir, 0));
+
+        Gizmos.color = Color.purple;
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(checkFrontWallLine * facingDir, 0));
+
     }
 
-
-    protected bool WallDetected()
+    protected bool FrontWallDetected()
     {
-        return Physics2D.Raycast(transform.position, Vector2.right * -facingDir, checkWallLine, wallLayer);
+        return Physics2D.Raycast(transform.position, Vector2.right * facingDir, checkFrontWallLine, wallLayer);
+    }
+
+    protected bool BackWallDetected()
+    {
+        return Physics2D.Raycast(transform.position, Vector2.right * -facingDir, checkBackWallLine, wallLayer);
     }
 
 

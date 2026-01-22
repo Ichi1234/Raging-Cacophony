@@ -936,6 +936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Vfx
   attackVfx: {fileID: 3528483140089254388}
+  smokePrefab: {fileID: 0}
 --- !u!114 &372218137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,7 +1323,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000479315e93b67ebf2f7e5bdb5
+  m_ApplyToSortingLayers: 00000000479315e93b67ebf2f7e5bdb5f32db85f
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2675,6 +2676,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946570358}
   m_CullTransparentMesh: 1
+--- !u!1 &1978371545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1978371547}
+  - component: {fileID: 1978371546}
+  m_Layer: 0
+  m_Name: Arena
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1978371546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978371545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c1ec8fdc8e318b46a0cfbd7a7313df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Arena
+  leftWall: {fileID: 1555423009}
+  rightWall: {fileID: 55108401}
+--- !u!4 &1978371547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978371545}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.68885, y: -2.24274, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2059069169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,7 +2753,7 @@ Transform:
   m_GameObject: {fileID: 2059069169}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.58, y: -5.19, z: 0}
+  m_LocalPosition: {x: 11.74, y: -5.46, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2818,7 +2865,8 @@ MonoBehaviour:
   canFlip: 1
   facingDir: -1
   player: {fileID: 372218135}
-  checkWallLine: 4.57
+  checkBackWallLine: 6.61
+  checkFrontWallLine: 7.83
   wallLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -2854,6 +2902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Vfx
   attackVfx: {fileID: 1567457776}
+  smokePrefab: {fileID: 4289828396848853291, guid: fb210b050e2009f4eb29a8188b64a8b1, type: 3}
 --- !u!212 &1170147038535146521
 SpriteRenderer:
   serializedVersion: 2
@@ -3105,3 +3154,4 @@ SceneRoots:
   - {fileID: 2059069170}
   - {fileID: 535191069}
   - {fileID: 1747886898}
+  - {fileID: 1978371547}

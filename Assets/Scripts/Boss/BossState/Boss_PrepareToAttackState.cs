@@ -10,10 +10,6 @@ public class Boss_PrepareToAttackState : BossState
     {
         base.Enter();
 
-        if (boss.facingDir != GetPlayerDirection())
-        {
-            boss.Flip();
-        }
 
         stateTimer = prepareAttackTime;
         boss.SetVelocity(0, rb.linearVelocity.y);
