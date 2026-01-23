@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Windows;
 
@@ -20,6 +21,9 @@ public class Boss : Entity
     public Boss_PrepareToAttackState prepareToAttackState { get; private set; }
     public Boss_LungeAttackState prepareLungeAttackState { get; private set; }
 
+    private Entity_Vfx entityVfx;
+    private Coroutine lungeAttackFinishedCo;
+    public GameObject bigSmokeVfx;
 
     protected override void Awake()
     {
@@ -28,6 +32,7 @@ public class Boss : Entity
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
         anim.SetBool("isIdle", true);
+        entityVfx = GetComponent<Entity_Vfx>();
 
         idleState = new Boss_IdleState(this, stateMachine, "isIdle");
         moveState = new Boss_MoveState(this, stateMachine, "isMoving");
@@ -88,5 +93,29 @@ public class Boss : Entity
         return Physics2D.Raycast(transform.position, Vector2.right * -facingDir, checkBackWallLine, wallLayer);
     }
 
+    public void LungeAttackChangeState()
+    {
+        if (lungeAttackFinishedCo != null)
+        {
+            StopCoroutine(lungeAttackFinishedCo);
+        }
+
+        lungeAttackFinishedCo = StartCoroutine(LungeAttackChangeStateCo());
+    }
+    private IEnumerator LungeAttackChangeStateCo()
+    {
+        bigSmokeVfx = entityVfx.CreateBigSmoke();
+
+        SetVelocity(0, 0);
+
+        yield return new WaitForSeconds(3);
+
+        bigSmokeVfx.GetComponent<ParticleSystem>().Stop();
+
+        stateMachine.canChangeState = true;
+        stateMachine.ChangeState(idleState);
+
+        
+    }
 
 }

@@ -9,6 +9,8 @@ public class Boss_LungeAttackState : BossState
 
     private bool isJumping = true;
     private float moveSpeedMultiplier = 2.5f;
+    private GameObject smokeVfx;
+    private GameObject bigSmokeVfx;
 
     private float farFromGround = 8;
     private float farFromWall = 8;
@@ -57,22 +59,36 @@ public class Boss_LungeAttackState : BossState
 
     }
 
+    private void FinishDash()
+    {
+        if (smokeVfx != null)
+        {
+            smokeVfx.GetComponent<VFX_Controller>().DestroyVfx();
+        }
+        anim.SetBool("isLungeAttack", false);
+
+        if (boss.bigSmokeVfx == null)
+        {
+            boss.LungeAttackChangeState();
+        }
+    }
     private void DashAfterJump()
     {
         if (!isJumping)
         {
             if (boss.frontWallDetected)
             {
-                anim.SetBool("isLungeAttack", false);
-                stateMachine.canChangeState = true;
-                stateMachine.ChangeState(boss.idleState);
+                FinishDash();
             }
 
             else if (boss.isGround)
             {
                 anim.SetBool("isMoving", false);
                 boss.SetVelocity(boss.moveSpeed * boss.facingDir * moveSpeedMultiplier, rb.linearVelocity.y);
-                entityVfx.CreateSmokeVfx();
+                if (smokeVfx == null)
+                {
+                    smokeVfx = entityVfx.CreateSmokeVfx();
+                }
                 anim.SetBool("isLungeAttack", true);
 
             }

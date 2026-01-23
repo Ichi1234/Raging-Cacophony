@@ -717,7 +717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Snow,The Dog of Chaos
+  m_text: Snow,Dog of The First Chaos
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -937,6 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Vfx
   attackVfx: {fileID: 3528483140089254388}
   smokePrefab: {fileID: 0}
+  bigSmokePrefab: {fileID: 0}
 --- !u!114 &372218137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2866,10 +2867,11 @@ MonoBehaviour:
   facingDir: -1
   player: {fileID: 372218135}
   checkBackWallLine: 6.61
-  checkFrontWallLine: 7.83
+  checkFrontWallLine: 7
   wallLayer:
     serializedVersion: 2
     m_Bits: 512
+  bigSmokeVfx: {fileID: 0}
 --- !u!114 &2059069177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2902,7 +2904,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Vfx
   attackVfx: {fileID: 1567457776}
-  smokePrefab: {fileID: 4289828396848853291, guid: fb210b050e2009f4eb29a8188b64a8b1, type: 3}
+  smokePrefab: {fileID: 8422032922207994480, guid: fb210b050e2009f4eb29a8188b64a8b1, type: 3}
+  bigSmokePrefab: {fileID: 2417838570579575918, guid: fd30b29a93a3cac4ca9372df5cf04e83, type: 3}
 --- !u!212 &1170147038535146521
 SpriteRenderer:
   serializedVersion: 2
