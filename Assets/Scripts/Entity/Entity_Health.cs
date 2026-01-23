@@ -28,7 +28,10 @@ public class Entity_Health : MonoBehaviour
 
     public void TakeDamage(float damage, float attackDir, float knockback, Collider2D targetCollision)
     {
+        Entity_Vfx entityVfx = GetComponent<Entity_Vfx>();
+
         ReduceHealth(damage);
+        entityVfx.CreateOnHitEffect();
 
         if (targetCollision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {

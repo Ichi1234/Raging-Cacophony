@@ -18,7 +18,7 @@ public class Boss_BasicAttackState : BossState
         {
             boss.Flip();
         }
-        entityVfx.CreateAttackVfx();
+        entityVfx.SpawnAttackObject();
 
     }
 
