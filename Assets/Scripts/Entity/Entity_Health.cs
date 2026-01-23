@@ -26,19 +26,14 @@ public class Entity_Health : MonoBehaviour
 
     public float GetPercentHealth() => curHealth / maxHealth * 100;
 
-    public void TakeDamage(float damage, float attackDir, float knockback, Collider2D targetCollision)
+    public virtual bool TakeDamage(AttackData attackData, float attackDir, Collider2D targetCollision)
     {
         Entity_Vfx entityVfx = GetComponent<Entity_Vfx>();
 
-        ReduceHealth(damage);
+        ReduceHealth(attackData.damage);
         entityVfx.CreateOnHitEffect();
 
-        if (targetCollision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            Player player = targetCollision.GetComponent<Player>();
-            player.KnockBack(attackDir, knockback);
-        }
-
+        return true;
     }
 
     public void ReduceHealth(float damage)

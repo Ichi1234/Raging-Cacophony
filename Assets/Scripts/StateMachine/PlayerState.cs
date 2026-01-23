@@ -5,9 +5,11 @@ public abstract class PlayerState : EntityState
     protected Player player;
     protected Rigidbody2D rb;
     protected PlayerInputSet input;
-    private float lastDashTime;
-    private float lastAttackTime;
+
+
+    protected Player_Combat playerCombat;
     protected Entity_Vfx entityVfx;
+    private float lastDashTime;
 
     public PlayerState(Player player, StateMachine stateMachine, string animParam) : base(player, stateMachine, animParam)
     {
@@ -16,10 +18,12 @@ public abstract class PlayerState : EntityState
         rb = player.GetComponent<Rigidbody2D>();
         anim = player.GetComponentInChildren<Animator>();
         entityVfx = player.GetComponent<Entity_Vfx>();
+        playerCombat = player.GetComponent<Player_Combat>();
+
         input = player.input;
 
         lastDashTime -= player.dashCooldown;
-        lastAttackTime -= player.entityCombat.attackCooldown;
+        player.lastAttackTime -= playerCombat.attackCooldown;
     }
 
     public override void Update()
@@ -35,7 +39,7 @@ public abstract class PlayerState : EntityState
         if (input.Player.Attack.WasPressedThisFrame() && CanAttack())
         {
             HandleAttackTypes();
-            lastAttackTime = Time.time;
+            player.lastAttackTime = Time.time;
         }
 
         if (input.Player.Dash.WasPerformedThisFrame() && CanDash())
@@ -71,5 +75,5 @@ public abstract class PlayerState : EntityState
         }
     }
     protected bool CanDash() => Time.time - lastDashTime > player.dashCooldown;
-    protected bool CanAttack() => Time.time - lastAttackTime > player.entityCombat.attackCooldown;
+    protected bool CanAttack() => Time.time - player.lastAttackTime > player.entityCombat.attackCooldown;
 }

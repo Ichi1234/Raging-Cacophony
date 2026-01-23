@@ -22,7 +22,7 @@ public class Player : Entity
     public Vector2 moveInput { get; private set; }
     public PlayerInputSet input { get; private set; }
 
-
+    public float lastAttackTime { get; set; }
 
     protected override void Awake()
     {

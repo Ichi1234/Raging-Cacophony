@@ -5,7 +5,7 @@ public class BossState : EntityState
     protected Boss boss;
     protected Player player;
     protected Rigidbody2D rb;
-    protected Entity_Combat bossCombat;
+    protected Boss_Combat bossCombat;
     protected Boss_Vfx bossVfx;
 
     protected float nearPlayerDistance = 8;
@@ -29,7 +29,7 @@ public class BossState : EntityState
         rb = boss.GetComponent<Rigidbody2D>();
         anim = boss.GetComponentInChildren<Animator>();
         bossVfx = boss.GetComponent<Boss_Vfx>();
-        bossCombat = boss.GetComponent<Entity_Combat>();
+        bossCombat = boss.GetComponent<Boss_Combat>();
         player = boss.GetPlayer();
 
         lastLungeAttckTime -= boss.dashCooldown;

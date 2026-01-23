@@ -809,8 +809,8 @@ GameObject:
   - component: {fileID: 372218133}
   - component: {fileID: 372218135}
   - component: {fileID: 372218136}
-  - component: {fileID: 372218137}
   - component: {fileID: 372218138}
+  - component: {fileID: 372218137}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -945,12 +945,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 372218131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc5bf1dd0e9e27a4e943bd173c893a7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e2bffa21c9b63642b27c26ee6988cfa, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Entity_Health
-  maxHealth: 100
-  uiHealthbar: {fileID: 985965049}
-  curHealth: 0
+  m_EditorClassIdentifier: Assembly-CSharp::Player_Combat
+  attackDamage: 10
+  attackCooldown: 0.8
+  attackPosition: {fileID: 1212231442}
+  attackHitboxSize: {x: 0, y: 0, z: 0}
+  attackHitboxOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &372218138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -960,16 +962,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 372218131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ddd9690905a8704d9dae6cca0d9e25b, type: 3}
+  m_Script: {fileID: 11500000, guid: 409a564525a32774ea10d3440acacd4e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Entity_Combat
-  attackDamage: 10
-  attackCooldown: 1
-  attackPosition: {fileID: 1212231442}
-  basicAttackKnockback: 4
-  contactKnockback: 8
-  attackHitboxSize: {x: 5.03, y: 3.65, z: 0}
-  attackHitboxOffset: {x: 0.41, y: 0, z: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Player_Health
+  maxHealth: 100
+  uiHealthbar: {fileID: 985965049}
+  curHealth: 0
 --- !u!1 &423626480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,9 +2379,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1567457775}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20a5c161fb8e5dd4cb8629e1a5ecbaca, type: 3}
+  m_Script: {fileID: 11500000, guid: bef3c5fc4bbc57442ad23b97d596f485, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VfxObject
+  m_EditorClassIdentifier: Assembly-CSharp::AttackObject
 --- !u!1 &1747886895
 GameObject:
   m_ObjectHideFlags: 0
@@ -2598,7 +2596,7 @@ GameObject:
   - component: {fileID: 2059069178}
   - component: {fileID: 2059069176}
   - component: {fileID: 2059069174}
-  - component: {fileID: 2059069177}
+  - component: {fileID: 2059069179}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -2733,25 +2731,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   bigSmokeVfx: {fileID: 0}
---- !u!114 &2059069177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059069169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ddd9690905a8704d9dae6cca0d9e25b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Entity_Combat
-  attackDamage: 10
-  attackCooldown: 1
-  attackPosition: {fileID: 1200868001}
-  basicAttackKnockback: 8
-  contactKnockback: 16
-  attackHitboxSize: {x: 0, y: 0, z: 0}
-  attackHitboxOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &2059069178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2768,6 +2747,25 @@ MonoBehaviour:
   onHitMat: {fileID: 2100000, guid: a00013af81304728b2be1f4309ee2433, type: 2}
   smokePrefab: {fileID: 8422032922207994480, guid: fb210b050e2009f4eb29a8188b64a8b1, type: 3}
   bigSmokePrefab: {fileID: 2417838570579575918, guid: fd30b29a93a3cac4ca9372df5cf04e83, type: 3}
+--- !u!114 &2059069179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059069169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be6e0acb7c5f58449d37e31e7dfde36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Boss_Combat
+  attackDamage: 10
+  attackCooldown: 1
+  attackPosition: {fileID: 1200868001}
+  attackHitboxSize: {x: 0, y: 0, z: 0}
+  attackHitboxOffset: {x: 0, y: 0, z: 0}
+  basicAttackKnockback: 8
+  contactKnockback: 12
 --- !u!212 &1170147038535146521
 SpriteRenderer:
   serializedVersion: 2
@@ -2864,9 +2862,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3528483140089254388}
-  - component: {fileID: 7205202377667601656}
   - component: {fileID: 7205202377667601657}
   - component: {fileID: 7205202377667601658}
+  - component: {fileID: 7205202377667601659}
   m_Layer: 11
   m_Name: VfxObject_Slash
   m_TagString: Untagged
@@ -2896,18 +2894,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7205202377667601656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4484989275804453907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 799fe925882572345a920c80eb40fcdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameObject_Slash
 --- !u!70 &7205202377667601657
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2972,6 +2958,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &7205202377667601659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4484989275804453907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bef3c5fc4bbc57442ad23b97d596f485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackObject
 --- !u!1 &7568119192697872164
 GameObject:
   m_ObjectHideFlags: 0

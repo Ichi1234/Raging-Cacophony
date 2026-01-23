@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class VfxObject_AnimationTriggers : MonoBehaviour
 {
-    private VfxObject currentObject;
+    private AttackObject currentObject;
     private Entity_AnimationTriggers entityAnimationTriggers;
 
     private void Awake()
     {
-        currentObject = GetComponentInParent<VfxObject>();
+        currentObject = GetComponentInParent<AttackObject>();
         entityAnimationTriggers = transform.root.GetComponentInChildren<Entity_AnimationTriggers>();
     }
 

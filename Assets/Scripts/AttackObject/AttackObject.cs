@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VfxObject : MonoBehaviour
+public class AttackObject : MonoBehaviour
 {
     protected Entity_Combat combatInfo;
 
@@ -15,7 +15,7 @@ public class VfxObject : MonoBehaviour
         
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boss") || collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            combatInfo.PerformAttack(collision, combatInfo.basicAttackKnockback);
+            combatInfo.PerformAttack(collision);
         }
         
 

@@ -10,6 +10,8 @@ public class Boss_BasicAttackState : BossState
     {
         base.Enter();
 
+        bossCombat.SetAttackData(new AttackData(bossCombat.attackDamage, bossCombat.basicAttackKnockback));
+
         HandleAttackRotation();
 
         boss.SetVelocity(0, rb.linearVelocity.y);
