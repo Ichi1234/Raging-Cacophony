@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class Boss_LeapAttackState : BossState
 {
-    private float yDistanceFromPlayer = 20;
+    private Arena arena;
+    private float farFromPlayerHead = 20;
     private Vector3 currentTopOfPlayerPosition;
 
-    public Boss_LeapAttackState(Boss boss, StateMachine stateMachine, string animParam) : base(boss, stateMachine, animParam)
+    public Boss_LeapAttackState(Boss boss, StateMachine stateMachine, string animParam, Arena arena) : base(boss, stateMachine, animParam)
     {
+        this.arena = arena;
     }
 
     public override void Enter()
@@ -19,7 +21,9 @@ public class Boss_LeapAttackState : BossState
         }
 
         Vector3 playerPosition = player.transform.position;
-        currentTopOfPlayerPosition = new Vector3(playerPosition.x, playerPosition.y + yDistanceFromPlayer);
+        currentTopOfPlayerPosition = new Vector3(playerPosition.x, playerPosition.y + farFromPlayerHead);
+
+        currentTopOfPlayerPosition = arena.ClampInsideArena(currentTopOfPlayerPosition);
     }
 
     public override void Update()

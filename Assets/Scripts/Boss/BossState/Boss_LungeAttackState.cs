@@ -6,13 +6,12 @@ public class Boss_LungeAttackState : BossState
     private Arena arena;
     private Vector3 leftWallPos;
     private Vector3 rightWallPos;
+    private Vector3 topWallPos;
 
     private bool isJumping = true;
     private float moveSpeedMultiplier = 2.5f;
     private GameObject smokeVfx;
 
-    private float farFromGround = 8;
-    private float farFromWall = 8;
     private bool jumpToLeftWall;
 
     public Boss_LungeAttackState(Boss boss, StateMachine stateMachine, string animParam, Arena arena) : base(boss, stateMachine, animParam)
@@ -27,6 +26,7 @@ public class Boss_LungeAttackState : BossState
         isJumping = true;
         leftWallPos = arena.GetLeftWallPos();
         rightWallPos = arena.GetRightWallPos();
+        topWallPos = arena.GetTopWallPos();
 
         jumpToLeftWall = Random.Range(0, 2) == 1 ? true : false; 
 
@@ -43,7 +43,9 @@ public class Boss_LungeAttackState : BossState
 
         DashAfterJump();
 
-        Vector3 destination = jumpToLeftWall ? new Vector3(leftWallPos.x + farFromWall, leftWallPos.y + farFromGround) : new Vector3(rightWallPos.x - farFromWall, rightWallPos.y + farFromGround);
+        Vector3 destination = jumpToLeftWall ? new Vector3(leftWallPos.x + arena.farFromWall, leftWallPos.y + arena.farFromGround) : new Vector3(rightWallPos.x - arena.farFromWall, rightWallPos.y + arena.farFromGround);
+
+        destination = arena.ClampInsideArena(destination);
 
         CheckFinishedJump(destination);
         
@@ -52,9 +54,6 @@ public class Boss_LungeAttackState : BossState
         {
             boss.transform.position = Vector3.MoveTowards(boss.transform.position, destination, boss.jumpForce * 1.25f * Time.deltaTime);
         }
-
-
-
 
     }
 

@@ -911,7 +911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -860, y: -504}
+  m_AnchoredPosition: {x: -874, y: -504}
   m_SizeDelta: {x: 230.9197, y: 20.3392}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &328152484
@@ -1066,7 +1066,7 @@ Transform:
   m_GameObject: {fileID: 372218131}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.14, y: -4.96, z: 0}
+  m_LocalPosition: {x: -8.15, y: -7.08, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1674,14 +1674,14 @@ RectTransform:
   m_GameObject: {fileID: 584732969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 985965047}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -136.5534, y: 3.4}
+  m_AnchoredPosition: {x: -148.8, y: 3.4}
   m_SizeDelta: {x: 44.5797, y: 38.3035}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &584732971
@@ -3689,7 +3689,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Arena
   leftWall: {fileID: 1555423009}
   rightWall: {fileID: 55108401}
-  topWall: {fileID: 0}
+  topWall: {fileID: 1076605265}
+  ground: {fileID: 736668333}
 --- !u!4 &1978371547
 Transform:
   m_ObjectHideFlags: 0
@@ -3736,7 +3737,7 @@ Transform:
   m_GameObject: {fileID: 2059069169}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.74, y: -5.46, z: 0}
+  m_LocalPosition: {x: 9.07, y: -5.32, z: 0}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 1
   m_Children:

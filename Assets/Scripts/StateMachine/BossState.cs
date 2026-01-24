@@ -56,7 +56,8 @@ public class BossState : EntityState
             {
                 if (Mathf.Abs(player.transform.position.x - boss.transform.position.x) <= 3f && player.transform.position.y > boss.transform.position.y)
                 {
-                    stateMachine.ChangeState(boss.lungeAttackState);
+                    specialAttackTypes = BossSpecialAttackTypes.LeapAttack;
+                    stateMachine.ChangeState(boss.prepareToAttackState);
                 }
                 stateMachine.ChangeState(boss.basicAttackState);
             }
@@ -96,6 +97,5 @@ public class BossState : EntityState
 
     protected float GetDistanceBetweenPlayer() => Mathf.Abs(player.transform.position.x - boss.transform.position.x);
     protected float GetPlayerDirection() => boss.transform.position.x < player.transform.position.x ? 1 : -1;
-
 
 }

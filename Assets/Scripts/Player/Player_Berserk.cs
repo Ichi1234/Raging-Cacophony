@@ -24,7 +24,7 @@ public class Player_Berserk : MonoBehaviour
         {
             soundLevels = 0;
         }
-        Debug.Log(soundLevels);
+
         rageBar.UpdateRageBar(soundLevels);
 
         foreach (var stage in berserkerStages)
