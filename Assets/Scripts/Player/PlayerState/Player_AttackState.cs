@@ -14,7 +14,7 @@ public class Player_AttackState : PlayerState
 
         base.Enter();
 
-        entityVfx.CreateAttackVfx();
+        entityVfx.SpawnAttackObject();
 
     }
 
@@ -37,12 +37,15 @@ public class Player_AttackState : PlayerState
         {
             case PlayerAttackTypes.Up:
                 destinationPosition = new Vector2(0, attackPositionDistance);
+                playerCombat.SetAttackData(new AttackData(playerCombat.attackDamage, 0, PlayerAttackTypes.Up));
                 break;
             case PlayerAttackTypes.Basic:
                 destinationPosition = new Vector2(attackPositionDistance, 0.1f);
+                playerCombat.SetAttackData(new AttackData(playerCombat.attackDamage, 5, PlayerAttackTypes.Basic));
                 break;
             case PlayerAttackTypes.Down:
                 destinationPosition = new Vector2(0, -attackPositionDistance);
+                playerCombat.SetAttackData(new AttackData(playerCombat.attackDamage, 15, PlayerAttackTypes.Down));
                 break;
 
         }

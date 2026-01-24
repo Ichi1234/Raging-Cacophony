@@ -12,8 +12,6 @@ public class Boss_MoveState : BossState
     public override void Enter()
     {
         base.Enter();
-
-        stateMachine.canChangeState = false;
     }
 
     public override void Update()
@@ -45,7 +43,7 @@ public class Boss_MoveState : BossState
 
         boss.SetVelocity(boss.moveSpeed * playerDirection, rb.linearVelocity.y);
 
-        boss.HandleFlip(-playerDirection);
+        boss.HandleFlip(playerDirection);
 
     }
 
@@ -53,7 +51,7 @@ public class Boss_MoveState : BossState
     {
         float playerDistance = GetDistanceBetweenPlayer();
 
-        if (boss.wallDetected || farPlayerDistance < playerDistance)
+        if (boss.backWallDetected || farPlayerDistance < playerDistance)
         {
             stateMachine.canChangeState = true;
             stateMachine.ChangeState(boss.idleState);
@@ -67,7 +65,4 @@ public class Boss_MoveState : BossState
 
     }
 
-    private float GetPlayerDirection() => boss.transform.position.x < player.transform.position.x ? 1 : -1;
-
-    private float GetDistanceBetweenPlayer() => Mathf.Abs(player.transform.position.x - boss.transform.position.x);
 }

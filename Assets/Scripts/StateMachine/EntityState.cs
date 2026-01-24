@@ -7,8 +7,6 @@ public abstract class EntityState
     public StateMachine stateMachine { get; private set; }
     protected float stateTimer;
 
-    protected Entity_Vfx entityVfx;
-
     protected Animator anim;
 
     public string animParam { get; private set; }

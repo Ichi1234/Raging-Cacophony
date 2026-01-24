@@ -17,7 +17,7 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Attack Details")]
-    [SerializeField] public Entity_Combat entityCombat;
+    public Entity_Combat entityCombat { get; private set; }
 
     protected Rigidbody2D rb;
     protected Animator anim;
@@ -87,7 +87,7 @@ public abstract class Entity : MonoBehaviour
 
     }
 
-    protected void Flip()
+    public void Flip()
     {
         facingDir *= -1;
         transform.Rotate(0, 180, 0);

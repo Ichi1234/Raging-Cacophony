@@ -16,11 +16,9 @@ public class StateMachine
         if (canChangeState)
         {
             currentState.Exit();
-            UpdateAnimationParameter(false);
 
             currentState = newState;
             currentState.Enter();
-            UpdateAnimationParameter(true);
         }
         
     }

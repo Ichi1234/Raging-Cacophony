@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class VfxObject : MonoBehaviour
+public class AttackObject : MonoBehaviour
 {
     protected Entity_Combat combatInfo;
+
 
     private void Awake()
     {
