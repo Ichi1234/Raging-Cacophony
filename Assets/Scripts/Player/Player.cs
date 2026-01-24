@@ -62,9 +62,6 @@ public class Player : Entity
 
     private void HandleBerserkerStage()
     {
-        Debug.Log(playerBerserk.curStage.movementSpeedMultiplier);
-        Debug.Log(entityVfx.attackObjectColor);
-
         moveSpeed = baseMoveSpeed * playerBerserk.curStage.movementSpeedMultiplier;
         entityCombat.attackDamage = entityCombat.baseAttackDamage * playerBerserk.curStage.attackDamageMultiplier;
         entityCombat.attackCooldown = entityCombat.baseAttackCoolDown * playerBerserk.curStage.attackCooldownMultiplier;

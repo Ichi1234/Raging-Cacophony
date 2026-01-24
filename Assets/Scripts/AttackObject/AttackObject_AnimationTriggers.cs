@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VfxObject_AnimationTriggers : MonoBehaviour
+public class AttackObject_AnimationTriggers : MonoBehaviour
 {
     private AttackObject currentObject;
     private Entity_AnimationTriggers entityAnimationTriggers;
