@@ -23,7 +23,7 @@ public abstract class PlayerState : EntityState
         input = player.input;
 
         lastDashTime -= player.dashCooldown;
-        player.lastAttackTime -= playerCombat.attackCooldown;
+        player.ReduceAttackCooldown(playerCombat.attackCooldown);
     }
 
     public override void Update()
@@ -39,7 +39,7 @@ public abstract class PlayerState : EntityState
         if (input.Player.Attack.WasPressedThisFrame() && CanAttack())
         {
             HandleAttackTypes();
-            player.lastAttackTime = Time.time;
+            player.SetLastTimeAttack(Time.time);
         }
 
         if (input.Player.Dash.WasPerformedThisFrame() && CanDash())

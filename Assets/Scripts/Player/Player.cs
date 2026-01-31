@@ -24,7 +24,7 @@ public class Player : Entity
     private Coroutine knockBackCo;
 
 
-    public float lastAttackTime { get; set; }
+    public float lastAttackTime { get; private set; }
 
 
     protected override void Awake()
@@ -84,7 +84,7 @@ public class Player : Entity
         input.Disable();
     }
 
-  
+
 
     public override void HandleFlip()
     {
@@ -93,6 +93,10 @@ public class Player : Entity
             Flip();
         }
     }
+
+    public void ReduceAttackCooldown(float reduceBy) => lastAttackTime -= reduceBy;
+
+    public void SetLastTimeAttack(float lastAttackTime) => this.lastAttackTime = lastAttackTime;
 
     private IEnumerator ChangeTransformAnimation(Vector3 start, Vector3 end, float duration)
     {
@@ -148,7 +152,7 @@ public class Player : Entity
 
         SetVelocity(attackDir * attackKnockback, attackKnockback * 1.25f);
 
-        yield return  new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);
 
         stateMachine.UnlockedState();
         stateMachine.ChangeState(idleState);
