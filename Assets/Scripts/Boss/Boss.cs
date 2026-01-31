@@ -114,7 +114,7 @@ public class Boss : Entity
 
         bigSmokeVfx.GetComponent<ParticleSystem>().Stop();
 
-        stateMachine.canChangeState = true;
+        stateMachine.UnlockedState();
         stateMachine.ChangeState(idleState);
 
         

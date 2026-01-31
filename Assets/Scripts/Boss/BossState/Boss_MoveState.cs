@@ -34,7 +34,7 @@ public class Boss_MoveState : BossState
 
         if (playerDistance <= nearPlayerDistance)
         {
-            stateMachine.canChangeState = true;
+            stateMachine.UnlockedState();
             stateMachine.ChangeState(boss.idleState);
         }
 
@@ -52,7 +52,7 @@ public class Boss_MoveState : BossState
 
         if (boss.backWallDetected || boss.frontWallDetected || farPlayerDistance < playerDistance)
         {
-            stateMachine.canChangeState = true;
+            stateMachine.UnlockedState();
             stateMachine.ChangeState(boss.idleState);
         }
 

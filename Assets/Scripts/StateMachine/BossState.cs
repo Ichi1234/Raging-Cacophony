@@ -38,7 +38,7 @@ public class BossState : EntityState
     {
         base.Enter();
 
-        stateMachine.canChangeState = false;
+        stateMachine.LockedState();
         curStateRandomResult = Random.value;
         randomChangeState = Random.value;
     }

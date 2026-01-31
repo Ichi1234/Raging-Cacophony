@@ -144,13 +144,13 @@ public class Player : Entity
 
         input.Disable();
         stateMachine.ChangeState(stunState);
-        stateMachine.canChangeState = false;
+        stateMachine.LockedState();
 
         SetVelocity(attackDir * attackKnockback, attackKnockback * 1.25f);
 
         yield return  new WaitForSeconds(0.5f);
 
-        stateMachine.canChangeState = true;
+        stateMachine.UnlockedState();
         stateMachine.ChangeState(idleState);
         input.Enable();
 

@@ -10,7 +10,7 @@ public class Player_AttackState : PlayerState
 
     public override void Enter()
     {
-        stateMachine.canChangeState = false;
+        stateMachine.LockedState();
 
         base.Enter();
 
@@ -24,7 +24,7 @@ public class Player_AttackState : PlayerState
 
         if (triggerCalled)
         {
-            stateMachine.canChangeState = true;
+            stateMachine.UnlockedState();
             stateMachine.ChangeState(player.idleState);
         }
     }

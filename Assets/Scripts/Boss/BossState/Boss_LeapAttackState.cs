@@ -32,7 +32,7 @@ public class Boss_LeapAttackState : BossState
 
         if (boss.transform.position.y >= currentTopOfPlayerPosition.y)
         {
-            stateMachine.canChangeState = true;
+            stateMachine.UnlockedState();
             stateMachine.ChangeState(boss.slamAttackState);
         }
 
