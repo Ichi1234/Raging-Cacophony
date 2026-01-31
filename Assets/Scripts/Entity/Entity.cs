@@ -22,7 +22,7 @@ public abstract class Entity : MonoBehaviour
     public bool canFlip { get; private set; } = true;
     public bool isGround { get; private set; }
 
-    public float facingDir { get; private set; } = 1;
+    public float facingDir { get; protected set; } = 1;
 
     public StateMachine stateMachine { get; private set; }
 

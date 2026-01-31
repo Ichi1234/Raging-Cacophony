@@ -47,7 +47,7 @@ public class Boss : Entity
 
 
 
-
+        facingDir = -1;
         stateMachine.Initialize(idleState);
 
     }
