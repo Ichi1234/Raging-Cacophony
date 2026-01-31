@@ -24,7 +24,7 @@ public class Player : Entity
     private Coroutine knockBackCo;
 
 
-    public float lastAttackTime { get; set; }
+    public float lastAttackTime { get; private set; }
 
 
     protected override void Awake()
@@ -61,11 +61,13 @@ public class Player : Entity
 
     private void HandleBerserkerStage()
     {
-        moveSpeed = baseMoveSpeed * playerBerserk.curStage.movementSpeedMultiplier;
-        entityCombat.attackDamage = entityCombat.baseAttackDamage * playerBerserk.curStage.attackDamageMultiplier;
-        entityCombat.attackCooldown = entityCombat.baseAttackCoolDown * playerBerserk.curStage.attackCooldownMultiplier;
-        entityHealth.regenPerSecond = playerBerserk.curStage.regenerateHealthPerSecond;
-        entityVfx.attackObjectColor = playerBerserk.curStage.slashColor;
+        SetMoveSpeed(baseMoveSpeed * playerBerserk.curStage.movementSpeedMultiplier);
+
+        entityHealth.SetRegenerateHealthPerSecond(playerBerserk.curStage.regenerateHealthPerSecond);
+        entityVfx.ChangeVfxColor(playerBerserk.curStage.slashColor);
+
+        entityCombat.SetAttackDamage(entityCombat.baseAttackDamage * playerBerserk.curStage.attackDamageMultiplier);
+        entityCombat.SetAttackCooldown(entityCombat.baseAttackCoolDown * playerBerserk.curStage.attackCooldownMultiplier);
     }
 
     private void OnEnable()
@@ -84,7 +86,7 @@ public class Player : Entity
         input.Disable();
     }
 
-  
+    private void SetMoveSpeed(float speed) => moveSpeed = speed;
 
     public override void HandleFlip()
     {
@@ -93,6 +95,10 @@ public class Player : Entity
             Flip();
         }
     }
+
+    public void ReduceAttackCooldown(float reduceBy) => lastAttackTime -= reduceBy;
+
+    public void SetLastTimeAttack(float lastAttackTime) => this.lastAttackTime = lastAttackTime;
 
     private IEnumerator ChangeTransformAnimation(Vector3 start, Vector3 end, float duration)
     {
@@ -144,13 +150,13 @@ public class Player : Entity
 
         input.Disable();
         stateMachine.ChangeState(stunState);
-        stateMachine.canChangeState = false;
+        stateMachine.LockedState();
 
         SetVelocity(attackDir * attackKnockback, attackKnockback * 1.25f);
 
-        yield return  new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f);
 
-        stateMachine.canChangeState = true;
+        stateMachine.UnlockedState();
         stateMachine.ChangeState(idleState);
         input.Enable();
 

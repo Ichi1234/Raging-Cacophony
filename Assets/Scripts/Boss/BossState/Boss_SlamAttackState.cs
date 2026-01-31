@@ -9,7 +9,7 @@ public class Boss_SlamAttackState : BossState
     {
         base.Enter();
 
-        boss.SetVelocity(0, -boss.jumpForce);
+        boss.SetVelocity(0, -boss.JumpForce);
     }
 
     public override void Update()
@@ -18,7 +18,7 @@ public class Boss_SlamAttackState : BossState
 
         if (boss.isGround)
         {
-            stateMachine.canChangeState = true;
+            stateMachine.UnlockedState();
             stateMachine.ChangeState(boss.idleState);
         }
     }

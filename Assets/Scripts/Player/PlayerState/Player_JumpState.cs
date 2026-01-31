@@ -10,7 +10,7 @@ public class Player_JumpState : PlayerState
     {
         base.Enter();
 
-        player.SetVelocity(rb.linearVelocity.x, player.jumpForce);
+        player.SetVelocity(rb.linearVelocity.x, player.JumpForce);
 
         player.JumpAnimation();
 
@@ -27,7 +27,7 @@ public class Player_JumpState : PlayerState
 
         if (input.Player.Move.WasPerformedThisFrame())
         {
-            player.SetVelocity(player.moveInput.x * player.moveSpeed, rb.linearVelocity.y);
+            player.SetVelocity(player.moveInput.x * player.MoveSpeed, rb.linearVelocity.y);
         }
     }
 

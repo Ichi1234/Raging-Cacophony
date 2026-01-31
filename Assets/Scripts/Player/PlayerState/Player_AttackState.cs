@@ -10,7 +10,7 @@ public class Player_AttackState : PlayerState
 
     public override void Enter()
     {
-        stateMachine.canChangeState = false;
+        stateMachine.LockedState();
 
         base.Enter();
 
@@ -24,7 +24,7 @@ public class Player_AttackState : PlayerState
 
         if (triggerCalled)
         {
-            stateMachine.canChangeState = true;
+            stateMachine.UnlockedState();
             stateMachine.ChangeState(player.idleState);
         }
     }
@@ -37,15 +37,15 @@ public class Player_AttackState : PlayerState
         {
             case PlayerAttackTypes.Up:
                 destinationPosition = new Vector2(0, attackPositionDistance);
-                playerCombat.SetAttackData(new AttackData(playerCombat.attackDamage, 0, PlayerAttackTypes.Up));
+                playerCombat.SetAttackData(new AttackData(playerCombat.AttackDamage, 0, PlayerAttackTypes.Up));
                 break;
             case PlayerAttackTypes.Basic:
                 destinationPosition = new Vector2(attackPositionDistance, 0.1f);
-                playerCombat.SetAttackData(new AttackData(playerCombat.attackDamage, 5, PlayerAttackTypes.Basic));
+                playerCombat.SetAttackData(new AttackData(playerCombat.AttackDamage, 5, PlayerAttackTypes.Basic));
                 break;
             case PlayerAttackTypes.Down:
                 destinationPosition = new Vector2(0, -attackPositionDistance);
-                playerCombat.SetAttackData(new AttackData(playerCombat.attackDamage, 10, PlayerAttackTypes.Down));
+                playerCombat.SetAttackData(new AttackData(playerCombat.AttackDamage, 10, PlayerAttackTypes.Down));
                 break;
 
         }

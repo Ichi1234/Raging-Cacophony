@@ -3,7 +3,7 @@ using UnityEngine;
 public class StateMachine
 {
     public EntityState currentState;
-    public bool canChangeState = true;
+    private bool canChangeState = true;
 
     public void Initialize(EntityState initialState)
     {
@@ -28,8 +28,7 @@ public class StateMachine
         currentState.Update();
     }
 
-    private void UpdateAnimationParameter(bool activate)
-    {
-        currentState.UpdateAnimationParameter(activate);
-    }
+    public void UnlockedState() => canChangeState = true;
+    
+    public void LockedState() => canChangeState = false;
 }

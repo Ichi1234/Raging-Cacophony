@@ -34,13 +34,13 @@ public class Boss_MoveState : BossState
 
         if (playerDistance <= nearPlayerDistance)
         {
-            stateMachine.canChangeState = true;
+            stateMachine.UnlockedState();
             stateMachine.ChangeState(boss.idleState);
         }
 
         float playerDirection = GetPlayerDirection();
 
-        boss.SetVelocity(boss.moveSpeed * playerDirection, rb.linearVelocity.y);
+        boss.SetVelocity(boss.MoveSpeed * playerDirection, rb.linearVelocity.y);
 
         boss.HandleFlip(playerDirection);
 
@@ -52,13 +52,13 @@ public class Boss_MoveState : BossState
 
         if (boss.backWallDetected || boss.frontWallDetected || farPlayerDistance < playerDistance)
         {
-            stateMachine.canChangeState = true;
+            stateMachine.UnlockedState();
             stateMachine.ChangeState(boss.idleState);
         }
 
         float playerDirection = GetPlayerDirection();
 
-        boss.SetVelocity(boss.moveSpeed * -playerDirection, rb.linearVelocity.y);
+        boss.SetVelocity(boss.MoveSpeed * -playerDirection, rb.linearVelocity.y);
 
         boss.HandleFlip(playerDirection);
 

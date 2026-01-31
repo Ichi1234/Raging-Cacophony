@@ -10,7 +10,7 @@ public class Boss_IdleState : BossState
         base.Enter();
 
         boss.SetVelocity(0, 0);
-        stateMachine.canChangeState = true;
+        stateMachine.UnlockedState();
     }
 
     public override void Update()

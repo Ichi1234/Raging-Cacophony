@@ -13,7 +13,7 @@ public class Boss_ContactDamageCollision : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            combatInfo.ContactAttack(collision, new AttackData(combatInfo.attackDamage, combatInfo.contactKnockback));
+            combatInfo.ContactAttack(collision, new AttackData(combatInfo.AttackDamage, combatInfo.ContactKnockback));
         }
     }
 }

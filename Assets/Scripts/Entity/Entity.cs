@@ -3,11 +3,11 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
     [Header("Movement Detail")]
-    public float moveSpeed;
-    public float jumpForce;
-    public float dashForce;
-    public float dashDuration;
-    public float dashCooldown = 5;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float jumpForce;
+    [SerializeField] protected float dashForce;
+    [SerializeField] protected float dashDuration;
+    [SerializeField] protected float dashCooldown = 5;
 
     protected float baseMoveSpeed;
 
@@ -19,12 +19,18 @@ public abstract class Entity : MonoBehaviour
     public Entity_Combat entityCombat { get; private set; }
     protected Rigidbody2D rb;
     protected Animator anim;
-    public bool canFlip = true;
+    public bool canFlip { get; private set; } = true;
     public bool isGround { get; private set; }
 
-    public float facingDir = 1;
+    public float facingDir { get; private set; } = 1;
 
     public StateMachine stateMachine { get; private set; }
+
+    public float MoveSpeed => moveSpeed;
+    public float JumpForce => jumpForce;
+    public float DashForce => dashForce;
+    public float DashDuration => dashDuration;
+    public float DashCooldown => dashCooldown;
 
     protected virtual void Awake()
     {
@@ -75,6 +81,8 @@ public abstract class Entity : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(velocityX, velocityY);
     }
+
+    public void SetCanFlip(bool canFlip) => this.canFlip = canFlip;
 
     public virtual void HandleFlip()
     {

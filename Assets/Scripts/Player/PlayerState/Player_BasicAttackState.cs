@@ -8,7 +8,7 @@ public class Player_BasicAttackState : Player_AttackState
 
     public override void Enter()
     {
-        player.canFlip = false;
+        player.SetCanFlip(false);
         HandleAttackPosition(PlayerAttackTypes.Basic);
         HandleAttackRotation(PlayerAttackTypes.Basic);
 
@@ -30,7 +30,7 @@ public class Player_BasicAttackState : Player_AttackState
     {
         base.Exit();
 
-        player.canFlip = true;
+        player.SetCanFlip(true);
     }
 
 
