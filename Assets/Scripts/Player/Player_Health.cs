@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player_Health : Entity_Health
 {
-    public float regenPerSecond = 0;
+    public float regenPerSecond { get; private set; } = 0;
 
     public override bool TakeDamage(AttackData attackData, float attackDir, Collider2D targetCollision)
     {
@@ -37,4 +37,6 @@ public class Player_Health : Entity_Health
             UpdateHealthUI();
         }
     }
+
+    public void SetRegenerateHealthPerSecond(float regenPerSec) => regenPerSecond = regenPerSec;
 }

@@ -8,8 +8,8 @@ public class Player_Berserk : MonoBehaviour
     [Range(0, 10)]
     [SerializeField] public float loundnessSensibility = 1;
     [SerializeField] private UI_RageBar rageBar;
-
-    public AudioLoundnessDetection detector;
+    [SerializeField] private AudioLoundnessDetection detector;
+    
     private float soundLevels;
 
     public static event Action OnStageChanged;

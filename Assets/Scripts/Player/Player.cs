@@ -64,7 +64,7 @@ public class Player : Entity
         moveSpeed = baseMoveSpeed * playerBerserk.curStage.movementSpeedMultiplier;
         entityCombat.attackDamage = entityCombat.baseAttackDamage * playerBerserk.curStage.attackDamageMultiplier;
         entityCombat.attackCooldown = entityCombat.baseAttackCoolDown * playerBerserk.curStage.attackCooldownMultiplier;
-        entityHealth.regenPerSecond = playerBerserk.curStage.regenerateHealthPerSecond;
+        entityHealth.SetRegenerateHealthPerSecond(playerBerserk.curStage.regenerateHealthPerSecond);
         entityVfx.attackObjectColor = playerBerserk.curStage.slashColor;
     }
 

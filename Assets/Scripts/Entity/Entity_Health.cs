@@ -6,7 +6,7 @@ public class Entity_Health : MonoBehaviour
     [SerializeField] public float maxHealth = 100;
     [SerializeField] private UI_HealthBar uiHealthbar;
 
-    public float curHealth;
+    public float curHealth { get; protected set; }
 
     private void Awake()
     {
