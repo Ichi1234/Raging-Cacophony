@@ -1159,8 +1159,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  canFlip: 1
-  facingDir: 1
   playerBerserk: {fileID: 0}
 --- !u!114 &372218136
 MonoBehaviour:
@@ -1176,7 +1174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Vfx
   attackVfx: {fileID: 3528483140089254388}
   onHitMat: {fileID: 2100000, guid: a00013af81304728b2be1f4309ee2433, type: 2}
-  attackObjectColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &372218137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1208,8 +1205,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player_Health
   maxHealth: 100
   uiHealthbar: {fileID: 985965049}
-  curHealth: 0
-  regenPerSecond: 0
 --- !u!114 &372218139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1253,7 +1248,7 @@ MonoBehaviour:
     movementSpeedMultiplier: 2
     regenerateHealthPerSecond: 5
     slashColor: {r: 1, g: 0.41568628, b: 0.41568628, a: 1}
-  loundnessSensibility: 2
+  loundnessSensibility: 4
   rageBar: {fileID: 328152486}
   detector: {fileID: 341929069}
 --- !u!1 &423626480
@@ -3824,7 +3819,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Health
   maxHealth: 1000
   uiHealthbar: {fileID: 1023174196}
-  curHealth: 0
 --- !u!114 &2059069176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3846,8 +3840,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  canFlip: 1
-  facingDir: -1
   player: {fileID: 372218135}
   checkBackWallLine: 6.61
   checkFrontWallLine: 7
@@ -3869,7 +3861,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Boss_Vfx
   attackVfx: {fileID: 1567457776}
   onHitMat: {fileID: 2100000, guid: a00013af81304728b2be1f4309ee2433, type: 2}
-  attackObjectColor: {r: 1, g: 1, b: 1, a: 1}
   smokePrefab: {fileID: 8422032922207994480, guid: fb210b050e2009f4eb29a8188b64a8b1, type: 3}
   bigSmokePrefab: {fileID: 2417838570579575918, guid: fd30b29a93a3cac4ca9372df5cf04e83, type: 3}
 --- !u!114 &2059069179
