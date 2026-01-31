@@ -3,8 +3,8 @@ using UnityEngine;
 public abstract class Entity_Combat : MonoBehaviour
 {
     [Header("Attack Details")]
-    public float attackDamage = 10;
-    public float attackCooldown = 1;
+    [SerializeField] protected float attackDamage = 10;
+    [SerializeField] protected float attackCooldown = 1;
     public float baseAttackDamage { get; protected set; }
     public float baseAttackCoolDown { get; protected set; }
 
@@ -17,11 +17,17 @@ public abstract class Entity_Combat : MonoBehaviour
 
     protected AttackData currentAttackData;
 
+    public float AttackDamage => attackDamage;
+    public float AttackCooldown => attackCooldown;
+
     private void Awake()
     {
         baseAttackDamage = attackDamage;
         baseAttackCoolDown = attackCooldown;
     }
+
+    public void SetAttackDamage(float damage) => attackDamage = damage;
+    public void SetAttackCooldown(float cooldown) => attackCooldown = cooldown;
 
     public void SetAttackData(AttackData data)
     {

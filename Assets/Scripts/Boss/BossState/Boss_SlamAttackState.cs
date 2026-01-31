@@ -9,7 +9,7 @@ public class Boss_SlamAttackState : BossState
     {
         base.Enter();
 
-        boss.SetVelocity(0, -boss.jumpForce);
+        boss.SetVelocity(0, -boss.JumpForce);
     }
 
     public override void Update()

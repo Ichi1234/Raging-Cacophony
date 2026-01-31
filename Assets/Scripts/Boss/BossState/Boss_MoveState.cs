@@ -40,7 +40,7 @@ public class Boss_MoveState : BossState
 
         float playerDirection = GetPlayerDirection();
 
-        boss.SetVelocity(boss.moveSpeed * playerDirection, rb.linearVelocity.y);
+        boss.SetVelocity(boss.MoveSpeed * playerDirection, rb.linearVelocity.y);
 
         boss.HandleFlip(playerDirection);
 
@@ -58,7 +58,7 @@ public class Boss_MoveState : BossState
 
         float playerDirection = GetPlayerDirection();
 
-        boss.SetVelocity(boss.moveSpeed * -playerDirection, rb.linearVelocity.y);
+        boss.SetVelocity(boss.MoveSpeed * -playerDirection, rb.linearVelocity.y);
 
         boss.HandleFlip(playerDirection);
 

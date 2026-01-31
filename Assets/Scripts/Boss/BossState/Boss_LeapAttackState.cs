@@ -36,6 +36,6 @@ public class Boss_LeapAttackState : BossState
             stateMachine.ChangeState(boss.slamAttackState);
         }
 
-        boss.transform.position = Vector3.MoveTowards(boss.transform.position, currentTopOfPlayerPosition , boss.jumpForce * Time.deltaTime);
+        boss.transform.position = Vector3.MoveTowards(boss.transform.position, currentTopOfPlayerPosition , boss.JumpForce * Time.deltaTime);
     }
 }

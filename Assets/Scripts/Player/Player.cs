@@ -61,11 +61,13 @@ public class Player : Entity
 
     private void HandleBerserkerStage()
     {
-        moveSpeed = baseMoveSpeed * playerBerserk.curStage.movementSpeedMultiplier;
-        entityCombat.attackDamage = entityCombat.baseAttackDamage * playerBerserk.curStage.attackDamageMultiplier;
-        entityCombat.attackCooldown = entityCombat.baseAttackCoolDown * playerBerserk.curStage.attackCooldownMultiplier;
+        SetMoveSpeed(baseMoveSpeed * playerBerserk.curStage.movementSpeedMultiplier);
+
         entityHealth.SetRegenerateHealthPerSecond(playerBerserk.curStage.regenerateHealthPerSecond);
-        entityVfx.attackObjectColor = playerBerserk.curStage.slashColor;
+        entityVfx.ChangeVfxColor(playerBerserk.curStage.slashColor);
+
+        entityCombat.SetAttackDamage(entityCombat.baseAttackDamage * playerBerserk.curStage.attackDamageMultiplier);
+        entityCombat.SetAttackCooldown(entityCombat.baseAttackCoolDown * playerBerserk.curStage.attackCooldownMultiplier);
     }
 
     private void OnEnable()
@@ -84,7 +86,7 @@ public class Player : Entity
         input.Disable();
     }
 
-
+    private void SetMoveSpeed(float speed) => moveSpeed = speed;
 
     public override void HandleFlip()
     {

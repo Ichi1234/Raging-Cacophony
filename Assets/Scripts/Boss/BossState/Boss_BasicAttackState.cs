@@ -10,7 +10,7 @@ public class Boss_BasicAttackState : BossState
     {
         base.Enter();
 
-        bossCombat.SetAttackData(new AttackData(bossCombat.attackDamage, bossCombat.basicAttackKnockback));
+        bossCombat.SetAttackData(new AttackData(bossCombat.AttackDamage, bossCombat.BasicAttackKnockback));
 
         HandleAttackRotation();
 

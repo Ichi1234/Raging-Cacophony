@@ -9,7 +9,7 @@ public class Player_DashState : PlayerState
     {
         base.Enter();
 
-        stateTimer = player.dashDuration;
+        stateTimer = player.DashDuration;
         player.DashAnimation();
      
     }
@@ -18,7 +18,7 @@ public class Player_DashState : PlayerState
     {
         base.Update();
 
-        player.SetVelocity(player.dashForce * player.facingDir, 0);
+        player.SetVelocity(player.DashForce * player.facingDir, 0);
 
         if (stateTimer < 0)
         {

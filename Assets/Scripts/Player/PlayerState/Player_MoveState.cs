@@ -15,7 +15,7 @@ public class Player_MoveState : PlayerState
         {
             stateMachine.ChangeState(player.idleState);
         }
-        player.SetVelocity(player.moveInput.x * player.moveSpeed, rb.linearVelocity.y);
+        player.SetVelocity(player.moveInput.x * player.MoveSpeed, rb.linearVelocity.y);
     }
 
 

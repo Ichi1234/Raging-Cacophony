@@ -22,8 +22,8 @@ public abstract class PlayerState : EntityState
 
         input = player.input;
 
-        lastDashTime -= player.dashCooldown;
-        player.ReduceAttackCooldown(playerCombat.attackCooldown);
+        lastDashTime -= player.DashCooldown;
+        player.ReduceAttackCooldown(playerCombat.AttackCooldown);
     }
 
     public override void Update()
@@ -74,6 +74,6 @@ public abstract class PlayerState : EntityState
             stateMachine.ChangeState(player.basicAttackState);
         }
     }
-    protected bool CanDash() => Time.time - lastDashTime > player.dashCooldown;
-    protected bool CanAttack() => Time.time - player.lastAttackTime > player.entityCombat.attackCooldown;
+    protected bool CanDash() => Time.time - lastDashTime > player.DashCooldown;
+    protected bool CanAttack() => Time.time - player.lastAttackTime > player.entityCombat.AttackCooldown;
 }

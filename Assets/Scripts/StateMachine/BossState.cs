@@ -31,7 +31,7 @@ public class BossState : EntityState
         bossCombat = boss.GetComponent<Boss_Combat>();
         player = boss.GetPlayer();
 
-        lastAttackTime -= boss.entityCombat.attackCooldown;
+        lastAttackTime -= boss.entityCombat.AttackCooldown;
     }
 
     public override void Enter()

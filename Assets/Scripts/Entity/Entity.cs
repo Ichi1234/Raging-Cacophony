@@ -3,11 +3,11 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
     [Header("Movement Detail")]
-    public float moveSpeed;
-    public float jumpForce;
-    public float dashForce;
-    public float dashDuration;
-    public float dashCooldown = 5;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float jumpForce;
+    [SerializeField] protected float dashForce;
+    [SerializeField] protected float dashDuration;
+    [SerializeField] protected float dashCooldown = 5;
 
     protected float baseMoveSpeed;
 
@@ -25,6 +25,12 @@ public abstract class Entity : MonoBehaviour
     public float facingDir { get; private set; } = 1;
 
     public StateMachine stateMachine { get; private set; }
+
+    public float MoveSpeed => moveSpeed;
+    public float JumpForce => jumpForce;
+    public float DashForce => dashForce;
+    public float DashDuration => dashDuration;
+    public float DashCooldown => dashCooldown;
 
     protected virtual void Awake()
     {

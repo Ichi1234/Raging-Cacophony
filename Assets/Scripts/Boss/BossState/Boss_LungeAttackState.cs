@@ -52,7 +52,7 @@ public class Boss_LungeAttackState : BossState
 
         if (isJumping)
         {
-            boss.transform.position = Vector3.MoveTowards(boss.transform.position, destination, boss.jumpForce * 1.25f * Time.deltaTime);
+            boss.transform.position = Vector3.MoveTowards(boss.transform.position, destination, boss.JumpForce * 1.25f * Time.deltaTime);
         }
 
     }
@@ -82,7 +82,7 @@ public class Boss_LungeAttackState : BossState
             else if (boss.isGround)
             {
                 anim.SetBool("isMoving", false);
-                boss.SetVelocity(boss.moveSpeed * boss.facingDir * moveSpeedMultiplier, rb.linearVelocity.y);
+                boss.SetVelocity(boss.MoveSpeed * boss.facingDir * moveSpeedMultiplier, rb.linearVelocity.y);
                 if (smokeVfx == null)
                 {
                     smokeVfx = bossVfx.CreateSmokeVfx();

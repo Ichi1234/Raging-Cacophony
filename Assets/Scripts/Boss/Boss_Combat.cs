@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class Boss_Combat : Entity_Combat
 {
-    public float basicAttackKnockback = 4;
-    public float contactKnockback = 8;
+    [SerializeField] protected float basicAttackKnockback = 4;
+    [SerializeField] protected float contactKnockback = 8;
+
+    public float BasicAttackKnockback => basicAttackKnockback;
+    public float ContactKnockback => contactKnockback;
 
     public void ContactAttack(Collider2D targetCollision, AttackData attackData)
     {
