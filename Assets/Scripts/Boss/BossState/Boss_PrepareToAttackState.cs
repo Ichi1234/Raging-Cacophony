@@ -20,7 +20,6 @@ public class Boss_PrepareToAttackState : BossState
 
         if (stateTimer <= 0)
         {
-            stateMachine.UnlockedState();
 
             switch (specialAttackTypes)
             {
@@ -28,7 +27,7 @@ public class Boss_PrepareToAttackState : BossState
                     stateMachine.ChangeState(boss.leapAttackState);
                     break;
                 case BossSpecialAttackTypes.LungeAttack:
-                    stateMachine.ChangeState(boss.lungeAttackState);
+                    stateMachine.ChangeState(boss.lungeAttackToWallState);
                     break;
             }
         }

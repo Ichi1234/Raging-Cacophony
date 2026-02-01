@@ -15,10 +15,8 @@ public class Boss_LeapAttackState : BossState
     {
         base.Enter();
 
-        if (boss.facingDir != GetPlayerDirection())
-        {
-            boss.Flip();
-        }
+        FlipToFacePlayer();
+
 
         Vector3 playerPosition = player.transform.position;
         currentTopOfPlayerPosition = new Vector3(playerPosition.x, playerPosition.y + farFromPlayerHead);
@@ -32,7 +30,6 @@ public class Boss_LeapAttackState : BossState
 
         if (boss.transform.position.y >= currentTopOfPlayerPosition.y)
         {
-            stateMachine.UnlockedState();
             stateMachine.ChangeState(boss.slamAttackState);
         }
 

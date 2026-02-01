@@ -16,10 +16,8 @@ public class Boss_BasicAttackState : BossState
 
         boss.SetVelocity(0, rb.linearVelocity.y);
 
-        if (boss.facingDir != GetPlayerDirection())
-        {
-            boss.Flip();
-        }
+        FlipToFacePlayer();
+
         bossVfx.SpawnAttackObject();
 
     }
@@ -31,8 +29,7 @@ public class Boss_BasicAttackState : BossState
 
         if (triggerCalled)
         {
-            stateMachine.UnlockedState();
-            stateMachine.ChangeState(boss.idleState);
+            stateMachine.ChangeState(boss.decideState);
         }
     }
 

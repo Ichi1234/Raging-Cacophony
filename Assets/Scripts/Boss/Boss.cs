@@ -12,13 +12,14 @@ public class Boss : Entity
     public bool backWallDetected { get; private set; }
     public bool frontWallDetected { get; private set; }
 
-    public Boss_IdleState idleState { get; private set; }
+    public Boss_DecideState decideState { get; private set; }
     public Boss_MoveState moveState { get; private set; }
     public Boss_BasicAttackState basicAttackState { get; private set; }
     public Boss_LeapAttackState leapAttackState { get; private set; }
     public Boss_SlamAttackState slamAttackState { get; private set; }
     public Boss_PrepareToAttackState prepareToAttackState { get; private set; }
-    public Boss_LungeAttackState lungeAttackState { get; private set; }
+    public Boss_LungeJumpToWallState lungeAttackToWallState { get; private set; }
+    public Boss_LungeDashState lungeDashState { get; private set; }
 
     private Boss_Vfx bossVfx;
     private Coroutine lungeAttackFinishedCo;
@@ -34,7 +35,7 @@ public class Boss : Entity
         
         anim.SetBool("isIdle", true);
 
-        idleState = new Boss_IdleState(this, stateMachine, "isIdle");
+        decideState = new Boss_DecideState(this, stateMachine, "isIdle");
         moveState = new Boss_MoveState(this, stateMachine, "isMoving");
 
         Arena arena = FindAnyObjectByType<Arena>();
@@ -43,12 +44,13 @@ public class Boss : Entity
         prepareToAttackState = new Boss_PrepareToAttackState(this, stateMachine, "isPrepareAttack");
         leapAttackState = new Boss_LeapAttackState(this, stateMachine, "isMoving", arena);
         slamAttackState = new Boss_SlamAttackState(this, stateMachine, "isMoving");
-        lungeAttackState = new Boss_LungeAttackState(this, stateMachine, "isMoving", arena);
+        lungeAttackToWallState = new Boss_LungeJumpToWallState(this, stateMachine, "isMoving", arena);
+        lungeDashState = new Boss_LungeDashState(this, stateMachine, "isLungeAttack");
 
 
 
         facingDir = -1;
-        stateMachine.Initialize(idleState);
+        stateMachine.Initialize(decideState);
 
     }
 
@@ -115,7 +117,7 @@ public class Boss : Entity
         bigSmokeVfx.GetComponent<ParticleSystem>().Stop();
 
         stateMachine.UnlockedState();
-        stateMachine.ChangeState(idleState);
+        stateMachine.ChangeState(decideState);
 
         
     }

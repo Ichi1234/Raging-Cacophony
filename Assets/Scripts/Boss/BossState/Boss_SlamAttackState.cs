@@ -18,8 +18,7 @@ public class Boss_SlamAttackState : BossState
 
         if (boss.isGround)
         {
-            stateMachine.UnlockedState();
-            stateMachine.ChangeState(boss.idleState);
+            stateMachine.ChangeState(boss.decideState);
         }
     }
 }
