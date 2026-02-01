@@ -1,11 +1,11 @@
 
 using UnityEngine;
 
-public class Boss_IdleState : BossState
+public class Boss_DecideState : BossState
 {
     private float attackChance = 0.7f;
 
-    public Boss_IdleState(Boss boss, StateMachine stateMachine, string animParam) : base(boss, stateMachine, animParam)
+    public Boss_DecideState(Boss boss, StateMachine stateMachine, string animParam) : base(boss, stateMachine, animParam)
     {
     }
 
