@@ -20,7 +20,6 @@ public class Boss_PrepareToAttackState : BossState
 
         if (stateTimer <= 0)
         {
-            stateMachine.UnlockedState();
 
             switch (specialAttackTypes)
             {

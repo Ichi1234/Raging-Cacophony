@@ -29,7 +29,6 @@ public class Boss_BasicAttackState : BossState
 
         if (triggerCalled)
         {
-            stateMachine.UnlockedState();
             stateMachine.ChangeState(boss.idleState);
         }
     }

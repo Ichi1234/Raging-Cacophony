@@ -68,7 +68,6 @@ public class Boss_LungeJumpToWallState : BossState
 
     private void OnJumpFinished()
     {
-        stateMachine.UnlockedState();
         stateMachine.ChangeState(boss.lungeDashState);
     }
 
