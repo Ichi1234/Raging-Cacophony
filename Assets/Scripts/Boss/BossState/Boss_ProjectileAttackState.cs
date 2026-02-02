@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Boss_ProjectileAttackState : BossState
 {
-    private GameObject bossPoop;
     public Boss_ProjectileAttackState(Boss boss, StateMachine stateMachine, string animParam) : base(boss, stateMachine, animParam)
     {
     }
@@ -24,7 +23,7 @@ public class Boss_ProjectileAttackState : BossState
 
         if (stateTimer <= 0)
         {
-            bossPoop = bossVfx.CreateBossPoop();
+            bossVfx.ShootBossPoop();
             stateMachine.ChangeState(boss.decisionState);
         }
 

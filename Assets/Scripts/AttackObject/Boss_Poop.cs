@@ -5,20 +5,25 @@ public class Boss_Poop : AttackObject
     [SerializeField] private float moveSpeed = 50;
     private Rigidbody2D rb;
     private SpriteRenderer[] poopParts;
+    private Boss_Vfx bossVfx;
     private Player player;
+    private AttackData projectileAttackData = new AttackData(5, 2);
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         poopParts = GetComponentsInChildren<SpriteRenderer>();
+        bossVfx = FindAnyObjectByType<Boss_Vfx>();
+
         player = FindAnyObjectByType<Player>();
+        combatInfo = FindAnyObjectByType<Boss_Combat>();
 
     }
 
     private void Start()
     {
         RandomPoopShape();
-        ShootPoop();
+
     }
 
     private void Update()
@@ -27,11 +32,22 @@ public class Boss_Poop : AttackObject
 
     }
 
+    private void OnEnable()
+    {
+        ShootPoop();
+    }
+
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Boss") || collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            combatInfo.SetAttackData(projectileAttackData);
+            combatInfo.PerformAttack(collision);
+        }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+
+        bossVfx.ReturnPoop(gameObject);
 
     }
 

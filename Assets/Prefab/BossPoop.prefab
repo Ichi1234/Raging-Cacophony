@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 3337140021362503388}
   - component: {fileID: 7496208169507019927}
   - component: {fileID: 4683487666955528757}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BossPoop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

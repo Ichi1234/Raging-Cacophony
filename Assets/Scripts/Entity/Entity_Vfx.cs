@@ -13,7 +13,7 @@ public class Entity_Vfx : MonoBehaviour
 
     public Color attackObjectColor { get; private set; } = Color.white;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
         originalMat = sr.material;
