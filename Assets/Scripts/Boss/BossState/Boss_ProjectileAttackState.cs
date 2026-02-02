@@ -12,7 +12,6 @@ public class Boss_ProjectileAttackState : BossState
     {
         base.Enter();
 
-        FlipToFacePlayer(true);
 
         stateTimer = 1.5f;
     }
@@ -20,7 +19,9 @@ public class Boss_ProjectileAttackState : BossState
     public override void Update()
     {
         base.Update();
-        
+
+        FlipToFacePlayer(true);
+
         if (stateTimer <= 0)
         {
             bossPoop = bossVfx.CreateBossPoop();

@@ -23,7 +23,7 @@ public class Boss_Poop : AttackObject
 
     private void Update()
     {
-        transform.Rotate(0, 0, GetPlayerDirection() * 1.25f);
+        transform.Rotate(0, 0,  2);
 
     }
 
@@ -43,7 +43,7 @@ public class Boss_Poop : AttackObject
 
         bool playerOnLeft = direction.x < 0;
 
-        float minAngle = playerOnLeft ? 135f : 0;
+        float minAngle = playerOnLeft ? 135f : 5f;
         float maxAngle = playerOnLeft ? 175f : 45f;
 
         float clampedAngle = Mathf.Clamp(angleDegree, minAngle, maxAngle);
@@ -62,7 +62,6 @@ public class Boss_Poop : AttackObject
         return moveSpeed * finalDirection;
     }
 
-    [ContextMenu("Shoot Poop")]
     public void ShootPoop()
     {
         rb.linearVelocity = CalculatedShootVector();
