@@ -18,7 +18,7 @@ public class Boss_SlamAttackState : BossState
 
         if (boss.isGround)
         {
-            stateMachine.ChangeState(boss.decideState);
+            stateMachine.ChangeState(boss.decisionState);
         }
     }
 }

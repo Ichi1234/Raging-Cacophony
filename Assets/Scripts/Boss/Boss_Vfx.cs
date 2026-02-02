@@ -4,6 +4,8 @@ public class Boss_Vfx : Entity_Vfx
 {
     [SerializeField] private GameObject smokePrefab;
     [SerializeField] private GameObject bigSmokePrefab;
+    [SerializeField] private GameObject bossPoop;
+    [SerializeField] private Transform assLocation;
 
     public GameObject CreateSmokeVfx()
     {
@@ -14,5 +16,10 @@ public class Boss_Vfx : Entity_Vfx
     public GameObject CreateBigSmoke()
     {
         return Instantiate(bigSmokePrefab, transform);
+    }
+
+    public GameObject CreateBossPoop()
+    {
+        return Instantiate(bossPoop, assLocation.position, assLocation.rotation);
     }
 }

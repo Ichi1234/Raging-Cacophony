@@ -1,11 +1,11 @@
 
 using UnityEngine;
 
-public class Boss_DecideState : BossState
+public class Boss_DecisionState : BossState
 {
     private float attackChance = 0.7f;
 
-    public Boss_DecideState(Boss boss, StateMachine stateMachine, string animParam) : base(boss, stateMachine, animParam)
+    public Boss_DecisionState(Boss boss, StateMachine stateMachine, string animParam) : base(boss, stateMachine, animParam)
     {
     }
 
@@ -63,21 +63,21 @@ public class Boss_DecideState : BossState
         if (whichFarAttack >= 70)
         {
             specialAttackTypes = BossSpecialAttackTypes.LeapAttack;
-            stateMachine.ChangeState(boss.prepareToAttackState);
+            stateMachine.ChangeState(boss.projectileAttackState);
         }
 
         else if (whichFarAttack >= 30)
         {
             // projectile state
             specialAttackTypes = BossSpecialAttackTypes.LungeAttack;
-            stateMachine.ChangeState(boss.prepareToAttackState);
+            stateMachine.ChangeState(boss.projectileAttackState);
         }
 
         else
         {
             // lunge attack
             specialAttackTypes = BossSpecialAttackTypes.LungeAttack;
-            stateMachine.ChangeState(boss.prepareToAttackState);
+            stateMachine.ChangeState(boss.projectileAttackState);
         }
     }
 

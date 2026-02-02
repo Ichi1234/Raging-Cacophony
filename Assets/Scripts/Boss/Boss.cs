@@ -12,7 +12,7 @@ public class Boss : Entity
     public bool backWallDetected { get; private set; }
     public bool frontWallDetected { get; private set; }
 
-    public Boss_DecideState decideState { get; private set; }
+    public Boss_DecisionState decisionState { get; private set; }
     public Boss_MoveState moveState { get; private set; }
     public Boss_BasicAttackState basicAttackState { get; private set; }
     public Boss_LeapAttackState leapAttackState { get; private set; }
@@ -20,6 +20,7 @@ public class Boss : Entity
     public Boss_PrepareToAttackState prepareToAttackState { get; private set; }
     public Boss_LungeJumpToWallState lungeAttackToWallState { get; private set; }
     public Boss_LungeDashState lungeDashState { get; private set; }
+    public Boss_ProjectileAttackState projectileAttackState { get; private set; }
 
     private Boss_Vfx bossVfx;
     private Coroutine lungeAttackFinishedCo;
@@ -35,7 +36,7 @@ public class Boss : Entity
         
         anim.SetBool("isIdle", true);
 
-        decideState = new Boss_DecideState(this, stateMachine, "isIdle");
+        decisionState = new Boss_DecisionState(this, stateMachine, "isIdle");
         moveState = new Boss_MoveState(this, stateMachine, "isMoving");
 
         Arena arena = FindAnyObjectByType<Arena>();
@@ -46,11 +47,10 @@ public class Boss : Entity
         slamAttackState = new Boss_SlamAttackState(this, stateMachine, "isMoving");
         lungeAttackToWallState = new Boss_LungeJumpToWallState(this, stateMachine, "isMoving", arena);
         lungeDashState = new Boss_LungeDashState(this, stateMachine, "isLungeAttack");
-
-
+        projectileAttackState = new Boss_ProjectileAttackState(this, stateMachine, "isIdle");
 
         facingDir = -1;
-        stateMachine.Initialize(decideState);
+        stateMachine.Initialize(decisionState);
 
     }
 
@@ -117,7 +117,7 @@ public class Boss : Entity
         bigSmokeVfx.GetComponent<ParticleSystem>().Stop();
 
         stateMachine.UnlockedState();
-        stateMachine.ChangeState(decideState);
+        stateMachine.ChangeState(decisionState);
 
         
     }

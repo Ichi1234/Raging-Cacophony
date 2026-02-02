@@ -43,9 +43,14 @@ public class BossState : EntityState
 
     }
 
-    protected void FlipToFacePlayer()
+    protected void FlipToFacePlayer(bool inverse = false)
     {
-        if (boss.facingDir != GetPlayerDirection())
+        if (boss.facingDir != GetPlayerDirection() && !inverse)
+        {
+            boss.Flip();
+        }
+
+        else if (boss.facingDir == GetPlayerDirection() && inverse)
         {
             boss.Flip();
         }
