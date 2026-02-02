@@ -43,15 +43,34 @@ public class BossState : EntityState
 
     }
 
-    protected void FlipToFacePlayer()
+    public override void Update()
     {
-        if (boss.facingDir != GetPlayerDirection())
+        base.Update();
+
+        if (player == null)
         {
-            boss.Flip();
+            return;
         }
     }
 
-    protected float GetDistanceBetweenPlayer() => Mathf.Abs(player.transform.position.x - boss.transform.position.x);
-    protected float GetPlayerDirection() => boss.transform.position.x < player.transform.position.x ? 1 : -1;
+    protected void FlipToFacePlayer(bool inverse = false)
+    {
+        int targetDir = GetPlayerDirection();
+
+        if (inverse)
+            targetDir *= -1;
+
+        if (boss.facingDir != targetDir)
+            boss.Flip();
+    }
+
+    protected float GetDistanceBetweenPlayer()
+    {
+        if (player == null) return 0;
+
+        return Mathf.Abs(player.transform.position.x - boss.transform.position.x);
+    }
+
+    protected int GetPlayerDirection() => boss.transform.position.x < player.transform.position.x ? 1 : -1;
 
 }

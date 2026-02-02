@@ -10,9 +10,8 @@ public class AttackObject : MonoBehaviour
         combatInfo = GetComponentInParent<Entity_Combat>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boss") || collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             combatInfo.PerformAttack(collision);
