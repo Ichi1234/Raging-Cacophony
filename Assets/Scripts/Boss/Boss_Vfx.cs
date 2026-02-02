@@ -26,6 +26,10 @@ public class Boss_Vfx : Entity_Vfx
         {
             GameObject poop = Instantiate(bossPoop);
 
+            Boss_Poop poopScript = poop.GetComponent<Boss_Poop>();
+
+            poopScript.Initialize(this, GetComponent<Boss_Combat>());
+
             poop.SetActive(false);
 
             poopLists.Add(poop);

@@ -9,14 +9,18 @@ public class Boss_Poop : AttackObject
     private Player player;
     private AttackData projectileAttackData = new AttackData(5, 2);
 
+    public void Initialize(Boss_Vfx vfx, Boss_Combat combat)
+    {
+        bossVfx = vfx;
+        combatInfo = combat;
+    }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         poopParts = GetComponentsInChildren<SpriteRenderer>();
-        bossVfx = FindAnyObjectByType<Boss_Vfx>();
 
         player = FindAnyObjectByType<Player>();
-        combatInfo = FindAnyObjectByType<Boss_Combat>();
 
     }
 
