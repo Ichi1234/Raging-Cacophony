@@ -14,7 +14,7 @@ public class Boss_ProjectileAttackState : BossState
 
         FlipToFacePlayer(true);
 
-        stateTimer = 2;
+        stateTimer = 1.5f;
     }
 
     public override void Update()

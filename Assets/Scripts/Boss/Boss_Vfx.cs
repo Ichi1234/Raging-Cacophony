@@ -20,6 +20,6 @@ public class Boss_Vfx : Entity_Vfx
 
     public GameObject CreateBossPoop()
     {
-        return Instantiate(bossPoop, assLocation.position, assLocation.rotation);
+        return Instantiate(bossPoop, assLocation.position, Quaternion.Euler(0, 0, 90));
     }
 }

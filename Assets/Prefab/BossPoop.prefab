@@ -418,4 +418,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bcd50b536c51446a359f40f751fc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss_Poop
-  moveSpeed: 40
+  moveSpeed: 50

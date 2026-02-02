@@ -23,15 +23,15 @@ public class Boss_Poop : AttackObject
 
     private void Update()
     {
-        //transform.Rotate(0, 0, -1);
-        Debug.Log(rb.linearVelocity);
+        transform.Rotate(0, 0, GetPlayerDirection() * 1.25f);
+
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
 
-        //Destroy(gameObject);
+        Destroy(gameObject);
 
     }
 
@@ -43,8 +43,8 @@ public class Boss_Poop : AttackObject
 
         bool playerOnLeft = direction.x < 0;
 
-        float minAngle = playerOnLeft ? 180f - 45f : -45f;
-        float maxAngle = playerOnLeft ? 180f + 45f : 45f;
+        float minAngle = playerOnLeft ? 135f : 0;
+        float maxAngle = playerOnLeft ? 175f : 45f;
 
         float clampedAngle = Mathf.Clamp(angleDegree, minAngle, maxAngle);
 
